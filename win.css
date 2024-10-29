@@ -1,0 +1,196 @@
+#Win-Screen{
+    position: absolute;
+    width: 125vh;
+    height: 90vh;
+
+    z-index: 999;
+    transform: translateY(-150%);
+}
+
+.main{
+    width: 100%;
+    height: 90%;
+    background-color: #9c1919;
+    box-shadow: 0px 0px 200px 140px black;
+}
+
+.triangles{
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+}
+
+.triangle{
+    width: 0; 
+    height: 0; 
+    border-left: 31.25vh solid transparent;
+    border-right: 31.25vh solid transparent;
+    
+    border-top: 6vw solid #9c1919;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-150%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-150%);
+    }
+}
+
+.main button{
+    background-color: #811111;
+    width: 35%;
+    height: 15%;
+    border-radius: 20px;
+    border: none;
+
+    position: absolute;
+    bottom: 8%;
+    right: 7%;
+
+    color: white;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+    font-size: 3vw;
+    transition: 0.3s;
+}
+
+.main button:hover{
+    background-color: #630e0e;
+    cursor: pointer;
+}
+
+.coin{
+    position: absolute;
+    top: 2.5%;
+    right: 5%;
+    height: 10%;
+    width: 25%;
+    background-color: #811111;
+    border-radius: 1vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#coin-div{
+    height: 60%;
+    width: 80%;
+    background-color: #630e0e;
+    color: whitesmoke;
+    border-radius: 0.5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#coin-div p{
+    font-size: 2vw;
+    padding-left: 2%;
+    font-weight: bold;
+}
+
+#shop{
+    position: absolute;
+    height: 58%;
+    width: 100%;
+    top: 15%;
+    background-color: #811111;
+
+    display: flex;
+
+    box-shadow: 0px 0px  50px 1px rgba(0, 0, 0, 0.233) inset;
+}
+
+#temp-shop{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#temp-name{
+    width: 100%;
+    height: 15%;
+    background-color: #9c1919;
+    box-shadow: 0px 40px  50px 10px rgba(0, 0, 0, 0.1);
+}
+
+#temp-name p{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 2vw;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+}
+
+#perm-name{
+    width: 100%;
+    height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px  50px 1px rgba(0, 0, 0, 0.2) inset;
+}
+#perm-name p {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 2vw;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+}
+
+#perm-shop{
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#perm-container{
+    height: 85%;
+    top: 20%;
+    width: 100%;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    background-color: #630e0e;
+    box-shadow: 0px 0px  50px 1px rgba(0, 0, 0, 0.233) inset;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    overflow-y: auto;
+
+    scrollbar-color: rgb(255, 255, 255) #380808;
+}
+
+.perm-card{
+    width: 100%;
+    height: 20%;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.034);
+    transition: 0.2s ease-in-out;
+}
+
+.perm-card:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
