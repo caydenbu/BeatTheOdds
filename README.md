@@ -1,4 +1,4 @@
-- BeatTheOdds is a rogue-like card game you can play on any browser any time/
-- deeply inspired from one of my favorite games balatro, Im aiming to create a very short but pleasent experience anyone can enjoy.
+- BeatTheOdds is a rogue-like card game built in html, css, and vanilla jss. You can play on any browser any time.
+- deeply inspired from one of my favorite games Balatro, Im aiming to create a very short but pleasent experience anyone can enjoy.
 - you start with nothing with but a goal to win 10 games in a row. Eventually with permenant and temporary upgrades you will see its not as hard as it seems.
 - BeatTheOdds is a browser game that should be played horizontlly if you ever plan on playing on the phone. It COULD be played vertically but the UI will most likely be very small.
