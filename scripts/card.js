@@ -16,8 +16,6 @@ class Card {
 
     }
 
-    
-
     displayCard(hand){
         // create all elements for each card
         const card = document.createElement('div');
@@ -64,7 +62,7 @@ class Card {
 
 // Create Deck
 let suits = ["♣","♦","♥","♦"];
-let ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+let ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
 
 function newDeck(){
     let deck = [];
@@ -118,36 +116,36 @@ function calculateScore(gameOver){
         // Shows dev hidden cards value when needed
         //dealerScoreCounter.innerHTML += " " + dealerHand[dealerHand.length-1].score;
     }else{
-        dealerScoreCounter.innerHTML = dealerScore;
+        dealerScoreCounter.innerHTML = dealerScore; // show actual score when game is over and card is revealed
     }
     
-
-    if(dealerScore >= 21){
+    // If player or dealers busts give the win to the corresponding winner and reset the scores
+    if(dealerScore > 21){
         playerWon = true;
         playerScore = 0;
         dealerScore = 0;
-    }else if(playerScore >= 21){
+    }else if(playerScore > 21){
         playerLoss = true;
         dealerScore = 0;
     }
 }
 
+// Initilize hands
 let playerHand = [];
 let dealerHand = [];
-
 const playerHandContainer = document.getElementById("player-hand");
 const dealerHandContainer = document.getElementById("dealer-hand");
 
 function updateCards(gameOver){
     playerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < playerHand.length; i++) {
-       playerHand[i].displayCard(playerHandContainer); 
+       playerHand[i].displayCard(playerHandContainer); // display every card in the players hand
     }
 
     dealerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < dealerHand.length; i++) {
         if(i==dealerHand.length-1 && !gameOver){
-            dealerHand[i].displayHidden(dealerHandContainer); // hides the second dealers card as usual
+            dealerHand[i].displayHidden(dealerHandContainer); // hides the second dealers card then shows the rest
         }else{
             dealerHand[i].displayCard(dealerHandContainer); 
         }

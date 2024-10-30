@@ -22,4 +22,4 @@ async function coinUpdate() {
     }
 }
 
-endDiv.style.animation = "slideDown 0s ease-in-out forwards 0s"
+//endDiv.style.animation = "slideDown 0s ease-in-out forwards 0s"

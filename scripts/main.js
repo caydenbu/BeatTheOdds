@@ -1,6 +1,7 @@
 let deck = [];
 let playerWon = false;
 let playerLoss = false;
+let playerWins = 0;
 
 function hit(){
     drawCard(playerHand,deck, true);
@@ -25,15 +26,28 @@ function newRound(postShop){
 
     // adds win to left bar
     const winDivs = document.getElementById("win-bar").children;
+    if(playerWon){
+        playerWins++;
+        winDivs[playerWins-1].style.backgroundColor = "#099E5D"
+    }else{
+        playerWins = 0;
+        for (let i = 0; i < winDivs.length; i++) {
+            winDivs[i].style.backgroundColor = "#D9D9D9";
+        }
+    }
 
-    // Resets values with new round
+    // close the shop if openened
     if(postShop){
         endDiv.style.animation = "slideUp 1.5s ease-in-out forwards";
     }
+    // Resets values with new round
     playerLoss = false;
     playerWon = false;
     playerHand = [];
     dealerHand = [];
+
+
+    // Creates a newDeck
     deck = newDeck();
 
     // Shuffles deck
@@ -42,6 +56,7 @@ function newRound(postShop){
         [deck[i],deck[j]] = [deck[j], deck[i]];  // Swap elements
     }
 
+    // draws starting cards for dealer than player
     drawCard(dealerHand, deck, false);
     drawCard(dealerHand, deck, false)
     drawCard(playerHand, deck, true);
@@ -49,8 +64,6 @@ function newRound(postShop){
 
     update();
 }
-
-
 
 function update(){
 

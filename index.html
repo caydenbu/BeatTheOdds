@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="win.css">
 
-    <script src="/scripts/utility.js" defer async></script>
-    <script src="./scripts/card.js" defer async></script>
-    <script src="./scripts/main.js" defer async></script>    
-    <script src="./scripts/finish.js" defer async></script>    
+    <script src="./scripts/utility.js" defer ></script>
+    <script src="./scripts/card.js" defer ></script>
+    <script src="./scripts/main.js" defer ></script>    
+    <script src="./scripts/finish.js" defer ></script>    
 </head>
 <body>
+    <!-- Playable Window -->
     <main id="Game-Screen">
         <div id="win-bar">
             <div></div>
@@ -38,6 +39,7 @@
                 </div>
             </div>
         </div>
+        <!-- Table -->
         <div id="cards">
             <div id="dealer-half">
                 <div class="top"><p id="dealer-score">18</p></div>
@@ -48,6 +50,7 @@
                 <div class="top"><p id="player-score">21</p></div>
             </div>
         </div>
+        <!-- Deck View And PLayer Actions -->
         <div id="actions">
             <div class="deck-div">
                 <div id="deck">
@@ -62,6 +65,7 @@
             </div>
         </div>
     </main>
+    <!-- Victory Screen And Shop -->
     <menu id="Win-Screen">
         <div class="main">
             <button onclick="newRound(true)">Next Round</button>
