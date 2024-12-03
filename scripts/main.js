@@ -24,18 +24,6 @@ function stand(){
 const endDiv = document.getElementById("Win-Screen");
 function newRound(postShop){
 
-    // adds win to left bar
-    const winDivs = document.getElementById("win-bar").children;
-    if(playerWon){
-        playerWins++;
-        winDivs[playerWins-1].style.backgroundColor = "#099E5D"
-    }else{
-        playerWins = 0;
-        for (let i = 0; i < winDivs.length; i++) {
-            winDivs[i].style.backgroundColor = "#D9D9D9";
-        }
-    }
-
     // close the shop if openened
     if(postShop){
         endDiv.style.animation = "slideUp 1.5s ease-in-out forwards";
@@ -66,14 +54,13 @@ function newRound(postShop){
 }
 
 function update(){
-
     updateCards();
     calculateScore();
 
     if(playerLoss || playerWon){
         updateCards(true);
-        calculateScore(true)
-        endScreen();
+        calculateScore(true);
+        endScreen(playerWon);
     }
 }
 

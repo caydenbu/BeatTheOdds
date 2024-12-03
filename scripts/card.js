@@ -15,7 +15,6 @@ class Card {
         }
 
     }
-
     displayCard(hand){
         // create all elements for each card
         const card = document.createElement('div');

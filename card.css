@@ -25,6 +25,7 @@
     text-align: left;
     font-size: 2vw;
     font-family: Dueces;
+    color: black;
 }
 
 .rankBottom{
@@ -35,6 +36,7 @@
     text-align: left;
     font-size: 2vw;
     font-family: Dueces;
+    color: black;
     transform: scale(-1);
 }
 
@@ -44,6 +46,7 @@
     text-align: center;
     font-size: 4vw;
     transform: translateY(-2vw);
+    color: black;
 }
 
 .hidden{
