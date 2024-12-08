@@ -8,12 +8,14 @@
 		<!-- Import Scripts -->
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="card.css">
-		<link rel="stylesheet" href="win.css">
+        <link rel="stylesheet" href="win.css">
+		<link rel="stylesheet" href="deck.css">
 
 		<script src="./scripts/utility.js" defer ></script>
 		<script src="./scripts/card.js" defer ></script>
 		<script src="./scripts/main.js" defer ></script>    
 		<script src="./scripts/finish.js" defer ></script>    
+		<script src="./scripts/deck.js" defer ></script>    
 	</head>
 	<body>
 		<!-- Playable Window -->
@@ -54,7 +56,7 @@
 			<!-- Deck View And PLayer Actions -->
 			<div id="actions">
 				<div class="deck-div">
-					<div id="deck">
+					<div id="deck" onclick="OpenDeck()">
 						<div>
 							<div></div>
 						</div>
@@ -99,5 +101,17 @@
 				<div class="triangle"></div>
 			</div>
 		</menu>
+		<!-- Deck Screen -->
+		<legend id="Deck-Container">
+			<div id="exit" onclick="OpenDeck()"> Exit Deck</div>
+			<div id="Deck-Screen">
+				<div class="border" id="main-border">
+					<div class="sets"></div>
+					<div class="sets"></div>
+					<div class="sets"></div>
+					<div class="sets"></div>
+				</div>
+			</div>
+		</legend>
 	</body>
 </html>

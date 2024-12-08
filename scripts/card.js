@@ -20,6 +20,11 @@ class Card {
         const card = document.createElement('div');
         card.classList.add("card");
 
+        // Changes color according to suit
+        if(this.suit == "♦" || this.suit == "♥"){
+            card.classList.add("red");
+        }
+
         // Adds ranks to the card
         const rankTop = document.createElement("div")
         rankTop.classList.add("rankTop");
@@ -60,7 +65,7 @@ class Card {
 }
 
 // Create Deck
-let suits = ["♣","♦","♥","♦"];
+let suits = ["♣","♦","♥","♠"];
 let ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
 
 function newDeck(){
