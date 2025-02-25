@@ -15,6 +15,7 @@ function stand(){
     }else{
         // if player stands and count is lower then they loose :(
         standBtn.style.animation = "shake 0.7s ease-in-out 0s 1";
+
         playerLoss = true;
     }
 

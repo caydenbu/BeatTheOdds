@@ -123,6 +123,18 @@ function calculateScore(gameOver){
         dealerScoreCounter.innerHTML = dealerScore; // show actual score when game is over and card is revealed
     }
     
+    // I player has 5 cards and is under 21 they win
+    if(playerHand.length == 5 && playerScore <= 21){
+        playerWon = true;
+        playerScore = 0;
+        dealerScore = 0;
+    }
+    if(dealerHand.length == 5 && dealerScore <= 21){
+        playerLoss = true;
+        dealerScore = 0;
+        playerScore = 0;
+    }
+
     // If player or dealers busts give the win to the corresponding winner and reset the scores
     if(dealerScore > 21){
         playerWon = true;

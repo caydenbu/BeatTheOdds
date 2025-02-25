@@ -9,12 +9,16 @@ async function endScreen(didWin){
     endDiv.style.animation = "slideDown "+animationTime+"s ease-in-out forwards "+waitTime+"s"
     await wait((animationTime+waitTime)*800);
     coinUpdate();
+    if(!playerWon && !playerLoss){return;} // Stops questionmark from overwriting the score
     playerScoreCounter.innerHTML = "?"
     await wait((animationTime+waitTime)*200);
+    if(!playerWon && !playerLoss){return;} // Stops questionmark from overwriting the score
     playerScoreCounter.innerHTML = "??"
 
 }
 
+
+// ----- Shop Logic ----- //
 const coinCounter = document.getElementById("coin");
 async function coinUpdate() {
     for (let i = 0; i < 100; i++) {
@@ -23,6 +27,11 @@ async function coinUpdate() {
         await wait(10);
     }
 }
+
+
+
+
+
 
 // Win Bar Logic in the left of the screen
 const winCircles = document.getElementById("win-bar").children;
