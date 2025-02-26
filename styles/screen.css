@@ -1,0 +1,21 @@
+#portrait-reminder {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    color: white;
+}
+
+#portrait-reminder p {
+    font-size: 1rem;
+}
+
+@media (orientation: portrait) {
+
+    /* Your CSS rules for when the screen height is more than the width */
+    #portrait-reminder {
+        display: block;
+    }
+}

@@ -173,7 +173,7 @@ body{
 
 .top p{
     text-align: center;
-    font-size: 48px;
+    font-size: 5vw;
     color: white;
     font-weight: 400;
 }
@@ -219,7 +219,7 @@ body{
     align-items: center;
     justify-content: center;
 
-    box-shadow: #440b0b -20px 20px 10px 10px;
+    box-shadow: #440b0b -1vw 1.5vw 1vw 1vw;
     transform: translateX(6%);
     transition: 0.3s;
 }
