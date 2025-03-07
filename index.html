@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="./styles/win.css">
 		<link rel="stylesheet" href="./styles/deck.css">
 		<link rel="stylesheet" href="./styles/screen.css">
+		<link rel="stylesheet" href="./styles/title.css">
 
 		<script src="./scripts/screen.js" defer></script>
 		<script src="./scripts/utility.js" defer></script>
@@ -18,9 +19,25 @@
 		<script src="./scripts/main.js" defer></script>    
 		<script src="./scripts/finish.js" defer></script>    
 		<script src="./scripts/deck.js" defer></script>    
+		<script src="./scripts/title.js" defer></script>
 	</head>
 	<body>
-
+		<!-- Title Screen -->
+		<header id="Title-Screen">
+			<div id="title">
+				<h1>Beat The Odds</h1>
+			</div>
+			<div id="start">
+				<button onclick="start()" class="title-button">Settings</button>
+				<button onclick="start()" id="start-button">START</button>
+				<button onclick="start()" class="title-button">Load Save</button>
+			</div>
+			<div id="settings">
+				<a href="https://github.com/subwhoofer/BeatTheOdds" target="_blank">
+					<img src="https://static-00.iconduck.com/assets.00/github-light-icon-2048x1998-m3c0rgap.png" alt="" width="50px" height="50px">
+				</a>
+			</div>
+		</header>
 		<!-- Playable Window -->
 		<main id="Game-Screen">
 			<div id="win-bar">
@@ -118,7 +135,7 @@
 		</legend>
 		<!-- Portrait Reminder -->
 		<div id="portrait-reminder">
-			<p>*Rotate The Device So It Looks Better*</p>
+			<p>*I would recommend to rotate The Device So It Looks Better*</p>
 		</div>
 	</body>
 </html>

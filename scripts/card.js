@@ -79,6 +79,16 @@ function newDeck(){
 }
 
 function drawCard(hand, deck, isPlayer){
+
+    // Whenever deck is empty create and shuffle a new deck
+    if(deck.length == 0){
+        deck = newDeck();
+        for (let i = deck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+            [deck[i],deck[j]] = [deck[j], deck[i]];  // Swap elements
+        }
+    }
+
     let card = deck[0];
     if(isPlayer){
         hand.push(card);

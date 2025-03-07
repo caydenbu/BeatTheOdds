@@ -3,6 +3,8 @@ let playerWon = false;
 let playerLoss = false;
 let playerWins = 0;
 
+deck = newDeck();
+
 function hit(){
     drawCard(playerHand,deck, true);
     update();
@@ -10,7 +12,7 @@ function hit(){
 
 const standBtn = document.getElementById("stand");
 function stand(){
-    if(playerScore>dealerScore){ // If it does not make sense for dealer to draw they will ignore the stand
+    if(playerScore>=dealerScore){ // If it does not make sense for dealer to draw they will ignore the stand
         drawCard(dealerHand, deck, false);
     }else{
         // if player stands and count is lower then they loose :(
@@ -37,7 +39,7 @@ function newRound(postShop){
 
 
     // Creates a newDeck
-    deck = newDeck();
+    //deck = newDeck();
 
     // Shuffles deck
     for (let i = deck.length - 1; i > 0; i--) {

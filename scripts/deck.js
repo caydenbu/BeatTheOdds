@@ -1,25 +1,57 @@
 const deckContainers = document.getElementById("main-border").children;
 function CreateDeck(){
     let currentSuit;
-    const tempDeck = newDeck()
+    const tempDeck = newDeck();
+    console.log(deck);
+    console.log(tempDeck);
     for (let i = 0; i < 52; i++) {
         // Switches set div when next suit changes
         currentSuit = Math.floor(i / 13);
 
-        let card = tempDeck[i]
-        card.displayCard(deckContainers[currentSuit]);
+        let card = tempDeck[i];
+        let cardInDeck = false;
+
+        for (let i = 0; i < deck.length; i++) {
+            // Checks if card has been drawn or not
+            if(card.rank == deck[i].rank && card.suit == deck[i].suit){
+                cardInDeck = true;
+                break;
+            }
+            // Since the dealers last card is hidden we need to show it as not drawn when looking at the deck (I think this is better)
+            if(card.rank == dealerHand[dealerHand.length-1].rank && card.suit == dealerHand[dealerHand.length-1].suit){
+                cardInDeck = true;
+                break;
+            }
+        }
+
+        // Just read honestly
+        if(cardInDeck){
+            card.displayCard(deckContainers[currentSuit]);
+        }else{
+            card.displayHidden(deckContainers[currentSuit]);
+        }
     }
     
 }
-CreateDeck();
 
 let isDeckOpen = false;
 const deckContainer = document.getElementById("Deck-Container");
+const sets = document.getElementById("main-border").children;
 function OpenDeck(){
     if(isDeckOpen){
         deckContainer.style.display = "none";
     }else{
         deckContainer.style.display = "flex";
+
+        // Removes all cards in the div
+        for (let i = 0; i < sets.length; i++) {
+            while (sets[i].firstChild) {
+                sets[i].removeChild(sets[i].firstChild);
+            }
+        }
+
+        // Creates the new deck displaying cards
+        CreateDeck();
     }
     isDeckOpen = !isDeckOpen;
 }
