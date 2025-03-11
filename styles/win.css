@@ -10,7 +10,7 @@
 
 
     z-index: 999;
-    #transform: translateY(-150%);
+    transform: translateY(-150%);
 }
 
 .main{
@@ -166,7 +166,7 @@
 #perm-name p {
     color: whitesmoke;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.8vw;
     font-family: "Karla", sans-serif;
     font-weight: bold;
 }
@@ -236,7 +236,7 @@
     height: 80%;
     background-color: #5c090900;
     border-radius: 1vw;
-    font-size: 2vw;
+    font-size: 1.8vw;
     color: whitesmoke;
     display: flex;
     align-items: center;
@@ -262,10 +262,37 @@
     color: whitesmoke;
     font-size: 1.8vw;
     font-weight: bold;
+
 }
 
 .checkbox:hover{
     cursor: pointer;
     background-color: #380808;
 }
+
+@keyframes checkboxChecked {
+    0% {
+        background-color: #5c090900;
+    }
+    50% {
+        background-color: green;
+    }
+    100% {
+        background-color: #5c090900;
+    }
+}
+
+@keyframes checkboxFailed {
+    0% {
+        background-color: #5c090900;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: #5c090900;
+    }
+}
+
+
 
