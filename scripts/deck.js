@@ -2,8 +2,6 @@ const deckContainers = document.getElementById("main-border").children;
 function CreateDeck(){
     let currentSuit;
     const tempDeck = newDeck();
-    console.log(deck);
-    console.log(tempDeck);
     for (let i = 0; i < 52; i++) {
         // Switches set div when next suit changes
         currentSuit = Math.floor(i / 13);

@@ -20,9 +20,17 @@ async function endScreen(didWin){
 
 // ----- Shop Logic ----- //
 const coinCounter = document.getElementById("coin");
+let coinIncrease = 100;
+
 async function coinUpdate() {
+    coinIncrease = 100;
+    if(playerWon){
+        coinIncrease *= playerWins+1;
+    }
+    
+
     for (let i = 0; i < 100; i++) {
-        coins++;
+        coins += coinIncrease/100;
         coinCounter.innerHTML = coins + " Chips";
         await wait(10);
     }

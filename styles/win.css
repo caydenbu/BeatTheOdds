@@ -1,10 +1,16 @@
+/* re style this whole thing it is all absolute positioned and is sooooo confusing idk what the hell I was thinking */
+
 #Win-Screen{
     position: absolute;
-    width: 125vh;
-    height: 90vh;
+    width: 80vw;
+    aspect-ratio: 4/3;
+
+    max-height: 90vh;
+    max-width: 120vh;
+
 
     z-index: 999;
-    transform: translateY(-150%);
+    #transform: translateY(-150%);
 }
 
 .main{
@@ -12,22 +18,8 @@
     height: 90%;
     background-color: #9c1919;
     box-shadow: 0px 0px 200px 140px black;
-}
 
-.triangles{
-    width: 100%;
-    height: 10%;
-
-    display: flex;
-}
-
-.triangle{
-    width: 0; 
-    height: 0; 
-    border-left: 31.25vh solid transparent;
-    border-right: 31.25vh solid transparent;
-    
-    border-top: 6vw solid #9c1919;
+    border-radius: 50px;
 }
 
 @keyframes slideDown {
@@ -51,12 +43,12 @@
 .main button{
     background-color: #811111;
     width: 35%;
-    height: 15%;
+    height: 12%;
     border-radius: 20px;
     border: none;
 
     position: absolute;
-    bottom: 8%;
+    bottom: 12%;
     right: 7%;
 
     color: white;
@@ -101,6 +93,30 @@
     font-size: 2vw;
     padding-left: 2%;
     font-weight: bold;
+}
+
+.shop-title{
+    position: absolute;
+    top: 2.5%;
+    left: 5%;
+    height: 10%;
+    width: 40%;
+    background-color: #811111;
+    border-radius: 1vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0px 0px  50px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.shop-title p{
+    font-size: 3vw;
+    padding-left: 2%;
+    font-weight: bold;
+    color: whitesmoke;
+
 }
 
 #shop{
@@ -180,6 +196,7 @@
     gap: 2%;
     overflow-y: auto;
 
+
     scrollbar-color: rgb(255, 255, 255) #380808;
 }
 
@@ -189,8 +206,66 @@
     flex-shrink: 0;
     background-color: rgba(0, 0, 0, 0.034);
     transition: 0.2s ease-in-out;
+    padding-left: 3%;
+    padding-right: 3%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .perm-card:hover{
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
 }
+
+.price{
+    width: 20%;
+    height: 80%;
+    background-color: #5c090900;
+    border-radius: 1vw;
+    font-size: 2vw;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px  50px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.name{
+    width: 60%;
+    height: 80%;
+    background-color: #5c090900;
+    border-radius: 1vw;
+    font-size: 2vw;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px  50px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.checkbox{
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-color: #5c090900;
+    border-radius: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px  50px 5px rgba(0, 0, 0, 0.1) inset;
+
+    border-style: dashed;
+    border-width: 2px;
+    border-color: whitesmoke;
+    transition: 0.2s ease-in-out;
+
+    color: whitesmoke;
+    font-size: 1.8vw;
+    font-weight: bold;
+}
+
+.checkbox:hover{
+    cursor: pointer;
+    background-color: #380808;
+}
+

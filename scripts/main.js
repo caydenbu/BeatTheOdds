@@ -40,6 +40,13 @@ function newRound(postShop){
 
     // Creates a newDeck
     //deck = newDeck();
+    // If deck is less than 10 cards it will create a new deck
+    const shuffle = new Audio('./sfx/shuffle.wav');
+    shuffle.volume = 0.5;
+    if(deck.length < 10){
+        shuffle.play();
+        deck = newDeck();
+    }
 
     // Shuffles deck
     for (let i = deck.length - 1; i > 0; i--) {
@@ -66,5 +73,7 @@ function update(){
         endScreen(playerWon);
     }
 }
+
+
 
 newRound();

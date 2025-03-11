@@ -1,12 +1,14 @@
-fill the empty space when scaled with something
+- fill the empty space when scaled with something
+- notification bar
+    - cards shuffled
 
-perm buffs
 
-- Reroll Card
-- Destroy Card
-- Wild Card (Change it to any value you wish)
-- Reveal Dealer Card
-- Destroy Dealer Card
-- See next five cards? 
+- perm buffs
+    - Reroll Card
+    - Destroy Card
+    - Wild Card (Change it to any value you wish)
+    - Reveal Dealer Card
+    - Destroy Dealer Card
+    - See next five cards? 
 
 BUGS
