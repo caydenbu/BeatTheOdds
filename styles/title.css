@@ -1,4 +1,4 @@
-#Title-Screen{
+#Title-Screen {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,19 +10,19 @@
     align-items: center;
     flex-direction: column;
 
-    z-index: 100;
+    z-index: 99;
     gap: 5%;
     box-shadow: 0px 0px 200px 200px rgba(0, 0, 0, 0.5);
 }
 
-#Title-Screen h1{
-    color: #FFFFFF;
+#Title-Screen h1 {
+    color: #ffffff;
     font-size: 8em;
     margin-bottom: 0;
     text-align: center;
 }
 
-#start{
+#start {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
     gap: 2%;
 }
 
-.title-button{
+.title-button {
     width: 20%;
     height: 55%;
     font-size: 3vw;
@@ -43,11 +43,11 @@
     transition: 0.3s ease-in-out;
 }
 
-.title-button:hover{
+.title-button:hover {
     transform: scale(1.02);
 }
 
-#start-button{
+#start-button {
     font-size: 5vw;
     font-weight: semi-bold;
     background-color: green;
@@ -59,7 +59,7 @@
     font-family: monospace;
 }
 
-#start-button:hover{
+#start-button:hover {
     background-color: rgb(1, 92, 1);
     cursor: pointer;
     transform: scale(1.05);
@@ -69,17 +69,18 @@
     0% {
         transform: translateY(0vh);
     }
+
     100% {
         transform: translateY(-200vh);
     }
 }
 
-#links{
+#links {
     width: 70%;
     height: 10%;
     background-color: rgba(255, 255, 255, 0.13);
-    
 }
-#links a{
+
+#links a {
     cursor: pointer;
 }

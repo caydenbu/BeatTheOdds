@@ -1,0 +1,58 @@
+#Settings-Screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 100;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.settings-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+label {
+    color: white;
+    font-size: 32px;
+}
+
+.settings-slider {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    gap: 10%;
+}
+
+.settings-slider input {
+    width: 60%;
+}
+
+#settings-exit {
+    width: 10%;
+    aspect-ratio: 4/1;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+#settings-exit:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
