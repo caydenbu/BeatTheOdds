@@ -1,47 +1,49 @@
 /* Imports*/
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
 
-@keyframes shake{
-    0%{
+@keyframes shake {
+    0% {
         transform: rotate(0deg);
     }
-    33%{
 
+    33% {
         transform: rotate(5deg);
     }
-    66%{
+
+    66% {
         transform: rotate(-5deg);
     }
-    100%{
+
+    100% {
         transform: rotate(0deg);
     }
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: black;
 
     display: flex;
     justify-content: center;
     overflow: hidden;
-}      
+}
 
-menu{
+menu {
     background-color: rgba(17, 17, 17, 0);
     user-select: none;
 }
 
-p{
+p {
     font-size: 12px;
     font-family: "Karla", sans-serif;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,8 +53,7 @@ body{
 }
 
 /* Main Screen css (keep in mind percents might seem wierd but they were originally designed in figma */
-#Game-Screen{
-    
+#Game-Screen {
     width: 150vh;
     aspect-ratio: 3/2;
     background-color: rgb(17, 17, 17);
@@ -62,8 +63,7 @@ body{
     user-select: none;
 }
 
-
-#win-bar{
+#win-bar {
     position: relative;
     height: 100%;
     width: 7.33%;
@@ -78,7 +78,7 @@ body{
     z-index: 2;
 }
 
-#win-bar div{
+#win-bar div {
     width: 45%;
     aspect-ratio: 1/1;
 
@@ -87,27 +87,27 @@ body{
     transition: 0.3s;
 }
 
-#win-bar div:hover{
+#win-bar div:hover {
     transform: scale(111%);
 }
 
-#buff-menu{
+#buff-menu {
     position: relative;
     width: 25%;
     height: 100%;
-    
+
     background-color: #262626;
     z-index: 1;
 
     display: flex;
 }
 
-#scroller{
+#scroller {
     width: 75%;
     height: 100%;
 }
 
-#tabs{
+#tabs {
     width: 25%;
     height: 100%;
 
@@ -115,12 +115,12 @@ body{
     flex-direction: column;
 }
 
-#tabs div{
+#tabs div {
     height: 50%;
     width: 100%;
 
     background-color: #383838;
-    border: #5B5B5B solid 6px;
+    border: #5b5b5b solid 6px;
 
     display: flex;
     flex-direction: column;
@@ -130,11 +130,11 @@ body{
     color: white;
 }
 
-#tabs div p{
+#tabs div p {
     font-weight: bold;
 }
 
-#cards{
+#cards {
     width: 47%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.055);
@@ -143,7 +143,7 @@ body{
     flex-direction: column;
 }
 
-#dealer-half{
+#dealer-half {
     width: 100%;
     height: 50%;
     background-color: #64646428;
@@ -152,7 +152,7 @@ body{
     flex-direction: column;
 }
 
-#player-half{
+#player-half {
     width: 100%;
     height: 50%;
     background-color: #64646428;
@@ -161,7 +161,7 @@ body{
     flex-direction: column;
 }
 
-.top{
+.top {
     height: 30%;
     width: 100%;
     background-color: #099e5d54;
@@ -171,20 +171,20 @@ body{
     justify-content: center;
 }
 
-.top p{
+.top p {
     text-align: center;
     font-size: 5vw;
     color: white;
     font-weight: 400;
 }
 
-.bottom{
+.bottom {
     height: 70%;
     width: 100%;
     background-color: #9c19193d;
 
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     gap: 5%;
 
@@ -192,7 +192,7 @@ body{
     padding-right: 2%;
 }
 
-#actions{
+#actions {
     width: 21%;
     height: 100%;
     background-color: rgba(158, 158, 158, 0.075);
@@ -201,16 +201,42 @@ body{
     flex-direction: column;
 }
 
-.deck-div{
+.action-settings {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    height: 50%;
+    height: 20%;
     width: 100%;
 }
 
-#deck{
+.action-settings button {
+    width: 80%;
+    height: 40%;
+    background-color: #383838;
+    border: 5px solid #5b5b5b;
+    border-radius: 20px;
+    color: white;
+    font-size: 2vw;
+    transition: 0.3s ease-in-out;
+}
+
+.action-settings button:hover {
+    cursor: pointer;
+    background-color: #262626;
+    transform: translateY(-5%);
+}
+
+.deck-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30%;
+    width: 100%;
+}
+
+#deck {
     width: 50%;
     aspect-ratio: 1/1.6;
     background-color: rgb(153, 26, 26);
@@ -224,11 +250,11 @@ body{
     transition: 0.3s;
 }
 
-#deck:hover{
+#deck:hover {
     transform: scale(105%) translateX(6%);
 }
 
-#deck div{
+#deck div {
     width: 80%;
     height: 88%;
     border: 2px dashed whitesmoke;
@@ -239,7 +265,7 @@ body{
     cursor: pointer;
 }
 
-.hit-stand{
+.hit-stand {
     height: 50%;
     width: 100%;
 
@@ -251,7 +277,7 @@ body{
     text-align: center;
 }
 
-#hit{
+#hit {
     width: 80%;
     aspect-ratio: 5/2;
     border-radius: 15px;
@@ -260,18 +286,18 @@ body{
     transition: 0.3s ease-in-out;
     font-weight: 800;
 
-    background-color: #D42222;
+    background-color: #d42222;
     color: white;
     font-family: "Karla", sans-serif;
 }
 
-#hit:hover{
+#hit:hover {
     background-color: #9c1919;
     cursor: pointer;
     transform: scale(105%);
 }
 
-#stand{
+#stand {
     width: 80%;
     aspect-ratio: 5/2;
     border-radius: 15px;
@@ -282,10 +308,10 @@ body{
     font-family: "Karla", sans-serif;
     transition: 0.3s ease-in-out;
 
-    background-color: #128D41;
+    background-color: #128d41;
 }
 
-#stand:hover{
+#stand:hover {
     background-color: #0c5327;
     cursor: pointer;
     transform: scale(105%);
