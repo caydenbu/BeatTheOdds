@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="./styles/screen.css" />
     <link rel="stylesheet" href="./styles/title.css" />
     <link rel="stylesheet" href="./styles/settings.css" />
+    <link rel="stylesheet" href="./styles/notification.css" />
 
-    <script src="scripts/global.js"></script>
+    <script src="./scripts/global.js"></script>
     <script src="./scripts/screen.js" defer></script>
     <script src="./scripts/utility.js" defer></script>
     <script src="./scripts/card.js" defer></script>
@@ -24,6 +25,7 @@
     <script src="./scripts/deck.js" defer></script>
     <script src="./scripts/title.js" defer></script>
     <script src="./scripts/settings.js" defer></script>
+    <script src="./scripts/notification.js" defer></script>
 </head>
 
 <body>
@@ -47,6 +49,7 @@
             </a>
         </div>
     </header>
+    <!-- Settings Screen -->
     <menu id="Settings-Screen">
         <p class="settings-title">Settings</p>
 
@@ -60,6 +63,10 @@
         </div>
         <div id="settings-exit" onclick="ToggleSettings()">Exit</div>
     </menu>
+    <!-- Notification Box -->
+    <div id="Notification-Box">
+        <p id="notification-text">PLACEHOLDER TEXT</p>
+    </div>
     <!-- Playable Window -->
     <main id="Game-Screen">
         <div id="win-bar">

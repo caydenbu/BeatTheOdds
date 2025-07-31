@@ -8,3 +8,4 @@ shuffle.volume = sfxVol;
 const jazzBackground = new Audio("./sfx/wJazz.mp3");
 jazzBackground.volume = musicVol;
 jazzBackground.loop = true;
+

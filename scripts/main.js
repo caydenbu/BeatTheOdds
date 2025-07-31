@@ -41,7 +41,7 @@ function newRound(postShop) {
     //deck = newDeck();
     // If deck is less than 10 cards it will create a new deck
     if (deck.length < 10) {
-        shuffle.play();
+        SendNotification("Cards Shuffled...", 2, shuffle)
         deck = newDeck();
     }
 
