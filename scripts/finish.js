@@ -27,8 +27,9 @@ async function coinUpdate() {
     if(playerWon){
         coinIncrease *= playerWins+1;
     }
+    coinIncrease += bestStreak*100
     
-
+    // Slow Increase animation
     for (let i = 0; i < 100; i++) {
         coins += coinIncrease/100;
         coinCounter.innerHTML = coins + " Chips";
@@ -48,7 +49,7 @@ let upgrades = [0,0,0,0,0];
 const maxUpgrades = [9,9,5,5,5];
 const upgradeCost = [500,800,1000,1000,1500];
 
-
+// todo: why is this here
 function permanentUpgrade(index){
     switch(index) {
         case 0:
@@ -111,9 +112,15 @@ function failAnimation(index){
 // Win Bar Logic in the left of the screen
 const winCircles = document.getElementById("win-bar").children;
 
+let bestStreak = 0;
 function CalculateWins(didWin){
     if(didWin){
         playerWins++;
+
+        if(playerWins > bestStreak){
+            bestStreak = playerWins;
+            SendNotification("New Longest Streak!! ("+bestStreak+") + "+bestStreak*100+" base chips", 5, )
+        }
     }else{
         playerWins = 0;
     }

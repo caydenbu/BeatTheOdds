@@ -107,11 +107,19 @@ function calculateScore(gameOver){
 
     for (let i = 0; i < playerHand.length; i++) {
         playerScore += playerHand[i].score;
+        // Changes 11 to 1 if needed
+        if(playerScore > 21 && playerHand[i].score == 11){
+            playerScore -= 10;
+        }
     }
     playerScoreCounter.innerHTML = playerScore;
 
     for (let i = 0; i < dealerHand.length; i++) {
         dealerScore += dealerHand[i].score;
+        // Changes 11 to 1 if needed
+        if(dealerScore > 21 && dealerHand[i].score == 11){
+            dealerScore -= 10;
+        }
     }
 
     // when game is over show the score of all cards not just the unhidden cards

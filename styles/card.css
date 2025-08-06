@@ -44,8 +44,8 @@
     height: 45%;
     text-align: left;
     font-size: 2vw;
-    font-family: Dueces;
     transform: scale(-1);
+    font-family: Dueces;
 }
 
 .suit{
@@ -54,6 +54,7 @@
     text-align: center;
     font-size: 4vw;
     transform: translateY(-2vw);
+    font-family: Dueces;
 }
 
 .hidden{
