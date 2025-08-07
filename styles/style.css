@@ -105,6 +105,57 @@ body {
 #scroller {
     width: 75%;
     height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.perm-chip{
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    color: white;
+    text-align: center;
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.perm-name {
+    font-size: 1.5vw;
+}
+.perm-amount {
+    font-size: 2vw;
+}
+
+.chip{
+    width: 50%;
+    aspect-ratio: 1/1;
+    border-radius: 9999px;
+    border: dotted 5px white;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+}
+
+.chip:hover{
+    transform: scale(102%) rotate(360deg);
+    box-shadow: 0px 0px 30px 05px rgb(0,0,0,0.8);
+    cursor: pointer;
+}
+
+.chip div{
+    width: 70%;
+    aspect-ratio: 1/1;
+    border-radius: 9999px;
+    border: solid 3px white;
+    background-color: darkgreen;
 }
 
 #tabs {
