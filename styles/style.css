@@ -109,6 +109,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5%;
+    overflow-y: auto;
 }
 
 .perm-chip{
