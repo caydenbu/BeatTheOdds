@@ -4,16 +4,117 @@ const PERMCOPY = document.getElementById("perm-copy");
 PERMCOPY.remove();
 
 // Create Each Chip
-const CHIPNAME = ["Reroll Card", "Destroy Card", "Reveal Dealer Card", "Reveal Next Card", "Change Rank"];
+const CHIPNAME = [
+    "Reroll Card",
+    "Destroy Card",
+    "Reveal Dealer Card",
+    "Reveal Next Card",
+    "Change Rank",
+];
 const CHIPCOLOR = ["red", "green", "blue", "darkorchid", "rgb(20,20,20)"];
-const INSIDECHIPCOLOR = ["darkred", "darkgreen", "darkblue", "darkviolet", "black"];
+const INSIDECHIPCOLOR = [
+    "darkred",
+    "darkgreen",
+    "darkblue",
+    "darkviolet",
+    "black",
+];
 
+const TEMPLATE = PERMCOPY.cloneNode(true);
 for (let i = 0; i < upgrades.length; i++) {
+    const chip = TEMPLATE.cloneNode(true);
+    chip.removeAttribute("id");
 
-    PERMCOPY.children[0].innerHTML = CHIPNAME[i]
-    PERMCOPY.children[1].style.backgroundColor = CHIPCOLOR[i];
-    PERMCOPY.children[1].children[0].style.backgroundColor = INSIDECHIPCOLOR[i];
-    PERMCOPY.children[2].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
-    SCROLLER.appendChild(PERMCOPY.cloneNode(true));
+    chip.children[0].textContent = CHIPNAME[i]; // name
+    chip.children[1].style.backgroundColor = CHIPCOLOR[i]; // outer ring
+    chip.children[1].children[0].style.backgroundColor = INSIDECHIPCOLOR[i]; // inner
+    chip.children[2].textContent = `${upgrades[i]}/${maxUpgrades[i]}`; // upgrade count
+    chip.style.userSelect = "none";
 
+    let isDragging = false;
+    let grabOffsetX = 0,
+        grabOffsetY = 0;
+    let placeholder = null;
+
+    chip.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        chip.style.cursor = "grabbing";
+
+        // hide name + upgrade count
+        chip.children[0].style.visibility = "hidden";
+        chip.children[2].style.visibility = "hidden";
+
+        const scrollerRect = SCROLLER.getBoundingClientRect();
+        const chipRect = chip.getBoundingClientRect();
+
+        // placeholder
+        placeholder = document.createElement("div");
+        placeholder.style.width = `${chipRect.width}px`;
+        placeholder.style.height = `${chipRect.height}px`;
+        placeholder.style.visibility = "hidden";
+        chip.parentNode.insertBefore(placeholder, chip.nextSibling);
+
+        // position chip on cursor
+        chip.style.position = "absolute";
+        chip.style.left = `${chipRect.left - scrollerRect.left}px`;
+        chip.style.top = `${chipRect.top - scrollerRect.top}px`;
+        chip.style.width = `${chipRect.width}px`;
+        chip.style.height = `${chipRect.height}px`;
+        chip.style.zIndex = "10";
+
+        SCROLLER.appendChild(chip);
+
+        grabOffsetX = e.clientX - chipRect.left;
+        grabOffsetY = e.clientY - chipRect.top;
+
+        e.preventDefault();
+    });
+
+    const onMouseMove = (e) => {
+        if (!isDragging) return;
+        const scrollerRect = SCROLLER.getBoundingClientRect();
+        chip.style.left = `${e.clientX - scrollerRect.left - grabOffsetX}px`;
+        chip.style.top = `${e.clientY - scrollerRect.top - grabOffsetY}px`;
+    };
+
+    const onMouseUp = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        chip.style.cursor = "grab";
+
+        // snap back
+        const scrollerRect = SCROLLER.getBoundingClientRect();
+        const phRect = placeholder.getBoundingClientRect();
+
+        chip.style.transition = "left 150ms ease, top 150ms ease";
+        chip.style.left = `${phRect.left - scrollerRect.left}px`;
+        chip.style.top = `${phRect.top - scrollerRect.top}px`;
+
+        const finalize = () => {
+            placeholder.replaceWith(chip);
+            placeholder = null;
+
+            // restore normal flow
+            chip.style.position = "";
+            chip.style.left = "";
+            chip.style.top = "";
+            chip.style.width = "";
+            chip.style.height = "";
+            chip.style.zIndex = "";
+            chip.style.transition = "";
+
+            // show name + upgrade count again
+            chip.children[0].style.visibility = "";
+            chip.children[2].style.visibility = "";
+
+            chip.removeEventListener("transitionend", finalize);
+        };
+
+        chip.addEventListener("transitionend", finalize, { once: true });
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
+    SCROLLER.appendChild(chip);
 }
