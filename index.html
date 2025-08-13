@@ -1,235 +1,210 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Beat The Odds</title>
-        <link
-            rel="icon"
-            href="https://cdn-icons-png.flaticon.com/512/8983/8983569.png"
-        />
-        <!-- Import Styles & Scripts -->
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link rel="stylesheet" href="./styles/card.css" />
-        <link rel="stylesheet" href="./styles/win.css" />
-        <link rel="stylesheet" href="./styles/deck.css" />
-        <link rel="stylesheet" href="./styles/screen.css" />
-        <link rel="stylesheet" href="./styles/title.css" />
-        <link rel="stylesheet" href="./styles/settings.css" />
-        <link rel="stylesheet" href="./styles/notification.css" />
 
-        <script src="./scripts/global.js"></script>
-        <script src="./scripts/screen.js" defer></script>
-        <script src="./scripts/utility.js" defer></script>
-        <script src="./scripts/card.js" defer></script>
-        <script src="./scripts/main.js" defer></script>
-        <script src="./scripts/finish.js" defer></script>
-        <script src="./scripts/deck.js" defer></script>
-        <script src="./scripts/title.js" defer></script>
-        <script src="./scripts/settings.js" defer></script>
-        <script src="./scripts/notification.js" defer></script>
-        <script src="./scripts/upgrade.js" defer></script>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beat The Odds</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/8983/8983569.png" />
+    <!-- Import Styles & Scripts -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="stylesheet" href="./styles/win.css" />
+    <link rel="stylesheet" href="./styles/deck.css" />
+    <link rel="stylesheet" href="./styles/screen.css" />
+    <link rel="stylesheet" href="./styles/title.css" />
+    <link rel="stylesheet" href="./styles/settings.css" />
+    <link rel="stylesheet" href="./styles/notification.css" />
 
-    <body>
-        <!-- Title Screen -->
-        <header id="Title-Screen">
-            <div id="title">
-                <h1>Beat The Odds</h1>
-            </div>
-            <div id="start">
-                <button
-                    onclick="ToggleSettings()"
-                    id="settings-button"
-                    class="title-button"
-                >
-                    Settings
-                </button>
-                <button onclick="start()" id="start-button">START</button>
-                <button onclick="start()" class="title-button">
-                    Load Save
-                </button>
-            </div>
-            <div id="settings">
-                <a
-                    href="https://github.com/subwhoofer/BeatTheOdds"
-                    target="_blank"
-                >
-                    <img
-                        src="./Photos/githublogo.png"
-                        alt=""
-                        width="50px"
-                        height="50px"
-                    />
-                </a>
-            </div>
-        </header>
-        <!-- Settings Screen -->
-        <menu id="Settings-Screen">
-            <p class="settings-title">Settings</p>
+    <script src="./scripts/global.js"></script>
+    <script src="./scripts/screen.js" defer></script>
+    <script src="./scripts/utility.js" defer></script>
+    <script src="./scripts/card.js" defer></script>
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/finish.js" defer></script>
+    <script src="./scripts/deck.js" defer></script>
+    <script src="./scripts/title.js" defer></script>
+    <script src="./scripts/settings.js" defer></script>
+    <script src="./scripts/notification.js" defer></script>
+    <script src="./scripts/upgrade.js" defer></script>
+</head>
 
-            <div class="settings-slider">
-                <label for="slider">Music</label>
-                <input
-                    type="range"
-                    id="music-slider"
-                    name="music-volume"
-                    min="0"
-                    max="100"
-                />
-            </div>
-            <div class="settings-slider">
-                <label for="slider">Sound fx</label>
-                <input
-                    type="range"
-                    id="sfx-slider"
-                    name="sfx-volume"
-                    min="0"
-                    max="100"
-                />
-            </div>
-            <div id="settings-exit" onclick="ToggleSettings()">Exit</div>
-        </menu>
-        <!-- Notification Box -->
-        <div id="Notification-Box">
-            <p id="notification-text">PLACEHOLDER TEXT</p>
+<body>
+    <!-- Title Screen -->
+    <header id="Title-Screen">
+        <div id="title">
+            <h1>Beat The Odds</h1>
         </div>
-        <!-- Playable Window -->
-        <main id="Game-Screen">
-            <div id="win-bar">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <div id="buff-menu">
-                <div id="scroller">
-                    <div class="perm-chip" id="perm-copy">
-                        <p class="perm-name">TEMPORARY PLACEHOLDER</p>
-                        <div class="chip">
-                            <div></div>
-                        </div>
-                        <p class="perm-amount">#/#</p>
-                    </div>
-                </div>
-                <div id="tabs">
-                    <div id="card-tab"></div>
-                    <div id="perm-tab"></div>
-                </div>
-            </div>
-            <!-- Table -->
-            <div id="cards">
-                <div id="dealer-half">
-                    <div class="top">
-                        <p id="dealer-score">18</p>
-                    </div>
-                    <div class="bottom" id="dealer-hand"></div>
-                </div>
-                <div id="player-half">
-                    <div class="bottom" id="player-hand"></div>
-                    <div class="top">
-                        <p id="player-score">21</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Deck View And PLayer Actions -->
-            <div id="actions">
-                <div class="action-settings">
-                    <button onclick="ToggleSettings()">Settings ⛭</button>
-                </div>
-                <div class="deck-div">
-                    <div id="deck" onclick="OpenDeck()">
-                        <div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hit-stand">
-                    <button id="hit" onclick="hit()">HIT</button>
-                    <button id="stand" onclick="stand()">STAND</button>
-                </div>
-            </div>
-        </main>
-        <!-- Victory Screen And Shop -->
-        <menu id="Win-Screen">
-            <div class="main">
-                <div class="shop-title">
-                    <p>Shop</p>
-                </div>
-                <button onclick="newRound(true)">Next Round</button>
-                <div class="coin">
-                    <div id="coin-div">
-                        <p id="coin">0 CHIPS</p>
-                    </div>
-                </div>
-                <main id="shop">
-                    <div id="temp-shop">
-                        <div id="temp-name">
-                            <p>Temporary Cards</p>
-                        </div>
-                        <div id="temp-container">
-                            <div class="card-container"></div>
-                            <div class="card-container"></div>
-                            <div class="card-container"></div>
-                        </div>
-                    </div>
-                    <div id="perm-shop">
-                        <div id="perm-name">
-                            <p>Perminant Buffs</p>
-                        </div>
-                        <div id="perm-container">
-                            <div class="perm-card">
-                                <p class="price">500$</p>
-                                <p class="name">Reroll Card</p>
-                                <div class="checkbox">0/9</div>
-                            </div>
-                            <div class="perm-card">
-                                <p class="price">800$</p>
-                                <p class="name">Destroy Card</p>
-                                <div class="checkbox">0/9</div>
-                            </div>
-                            <div class="perm-card">
-                                <p class="price">1000$</p>
-                                <p class="name">Reveal Dealer Card</p>
-                                <div class="checkbox">0/5</div>
-                            </div>
-                            <div class="perm-card">
-                                <p class="price">1000$</p>
-                                <p class="name">Reveal Next Card</p>
-                                <div class="checkbox">0/5</div>
-                            </div>
-                            <div class="perm-card">
-                                <p class="price">1500$</p>
-                                <p class="name">Change Rank</p>
-                                <div class="checkbox">0/5</div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </menu>
-        <!-- Deck Screen -->
-        <legend id="Deck-Container">
-            <div id="exit" onclick="OpenDeck()">Exit Deck</div>
-            <div id="Deck-Screen">
-                <div class="border" id="main-border">
-                    <div class="sets"></div>
-                    <div class="sets"></div>
-                    <div class="sets"></div>
-                    <div class="sets"></div>
-                </div>
-            </div>
-        </legend>
-        <!-- Portrait Reminder -->
-        <div id="portrait-reminder">
-            <p>*I would recommend to rotate The Device So It Looks Better*</p>
+        <div id="start">
+            <button onclick="ToggleSettings()" id="settings-button" class="title-button">
+                Settings
+            </button>
+            <button onclick="start()" id="start-button">START</button>
+            <button onclick="start()" class="title-button">
+                Load Save
+            </button>
         </div>
-    </body>
+        <div id="settings">
+            <a href="https://github.com/subwhoofer/BeatTheOdds" target="_blank">
+                <img src="./Photos/githublogo.png" alt="" width="50px" height="50px" />
+            </a>
+        </div>
+    </header>
+    <!-- Settings Screen -->
+    <menu id="Settings-Screen">
+        <p class="settings-title">Settings</p>
+
+        <div class="settings-slider">
+            <label for="slider">Music</label>
+            <input type="range" id="music-slider" name="music-volume" min="0" max="100" />
+        </div>
+        <div class="settings-slider">
+            <label for="slider">Sound fx</label>
+            <input type="range" id="sfx-slider" name="sfx-volume" min="0" max="100" />
+        </div>
+        <div id="settings-exit" onclick="ToggleSettings()">Exit</div>
+    </menu>
+    <!-- Notification Box -->
+    <div id="Notification-Box">
+        <p id="notification-text">PLACEHOLDER TEXT</p>
+    </div>
+    <!-- Playable Window -->
+    <main id="Game-Screen">
+        <div id="win-bar">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div id="buff-menu">
+            <div id="scroller">
+                <div class="perm-chip" id="perm-copy">
+                    <p class="perm-name">TEMPORARY PLACEHOLDER</p>
+                    <div class="chip">
+                        <div></div>
+                    </div>
+                    <p class="perm-amount">#/#</p>
+                </div>
+            </div>
+            <div id="tabs">
+                <div id="card-tab"></div>
+                <div id="perm-tab"></div>
+            </div>
+        </div>
+        <!-- Table -->
+        <div id="cards">
+            <div id="dealer-half">
+                <div class="top">
+                    <p id="dealer-score">18</p>
+                </div>
+                <div class="bottom" id="dealer-hand"></div>
+            </div>
+            <div id="player-half">
+                <div class="bottom" id="player-hand"></div>
+                <div class="top">
+                    <p id="player-score">21</p>
+                </div>
+            </div>
+        </div>
+        <!-- Deck View And PLayer Actions -->
+        <div id="actions">
+            <div class="action-settings">
+                <button onclick="ToggleSettings()">Settings ⛭</button>
+            </div>
+            <div class="deck-div">
+                <div id="deck" onclick="OpenDeck()">
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hit-stand">
+                <button id="hit" onclick="hit()">HIT</button>
+                <button id="stand" onclick="stand()">STAND</button>
+            </div>
+        </div>
+    </main>
+    <!-- Victory Screen And Shop -->
+    <menu id="Win-Screen">
+        <div class="main">
+            <div class="shop-title">
+                <p>Shop</p>
+            </div>
+            <button onclick="newRound(true)">Next Round</button>
+            <div class="coin">
+                <div id="coin-div">
+                    <p id="coin">0 CHIPS</p>
+                </div>
+            </div>
+            <main id="shop">
+                <div id="temp-shop">
+                    <div id="temp-name">
+                        <p>Temporary Cards</p>
+                    </div>
+                    <div id="temp-container">
+                        <div class="card-container" onclick="BuyTemp(0)"></div>
+                        <div class="card-container" onclick="BuyTemp(1)"></div>
+                        <div class="card-container" onclick="BuyTemp(2)"></div>
+                    </div>
+                </div>
+                <div id="perm-shop">
+                    <div id="perm-name">
+                        <p>Perminant Buffs</p>
+                    </div>
+                    <div id="perm-container">
+                        <div class="perm-card">
+                            <p class="price">500$</p>
+                            <p class="name">Reroll Card</p>
+                            <div class="checkbox">0/9</div>
+                        </div>
+                        <div class="perm-card">
+                            <p class="price">800$</p>
+                            <p class="name">Destroy Card</p>
+                            <div class="checkbox">0/9</div>
+                        </div>
+                        <div class="perm-card">
+                            <p class="price">1000$</p>
+                            <p class="name">Reveal Dealer Card</p>
+                            <div class="checkbox">0/5</div>
+                        </div>
+                        <div class="perm-card">
+                            <p class="price">1000$</p>
+                            <p class="name">Reveal Next Card</p>
+                            <div class="checkbox">0/5</div>
+                        </div>
+                        <div class="perm-card">
+                            <p class="price">1500$</p>
+                            <p class="name">Change Rank</p>
+                            <div class="checkbox">0/5</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </menu>
+    <!-- Deck Screen -->
+    <legend id="Deck-Container">
+        <div id="exit" onclick="OpenDeck()">Exit Deck</div>
+        <div id="Deck-Screen">
+            <div class="border" id="main-border">
+                <div class="sets"></div>
+                <div class="sets"></div>
+                <div class="sets"></div>
+                <div class="sets"></div>
+            </div>
+        </div>
+    </legend>
+    <!-- Portrait Reminder -->
+    <div id="portrait-reminder">
+        <p>*I would recommend to rotate The Device So It Looks Better*</p>
+    </div>
+</body>
+
 </html>

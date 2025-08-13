@@ -30,8 +30,35 @@ async function endScreen(didWin) {
 // ----- Shop Logic ----- //
 
 // Create the buyable temporary cards
+let ownedTempCards = [];
 
-// TODO: Add functionality (Only Display is Done)
+let tempCards = [];
+let tempPrices = [];
+
+function BuyTemp(tempIndex) {
+    if (coins >= tempPrices[tempIndex]) {
+        ownedTempCards.push(tempCards[tempIndex]);
+        // Updates coins
+        coins -= tempPrices[tempIndex];
+        coinCounter.innerHTML = coins + " Chips";
+
+        // Removes bought Card
+        document.getElementsByClassName("card-container")[
+            tempIndex
+        ].style.display = "none";
+    } else {
+        // TODO: Add a shake affect to the card if you cany buy it
+        SendNotification(
+            "You can not afford that card (" +
+            coins +
+            "/" +
+            tempPrices[tempIndex] +
+            " chips)",
+            2,
+        );
+    }
+}
+
 function UpdateTemps() {
     const containers = document.getElementsByClassName("card-container");
 
@@ -41,8 +68,8 @@ function UpdateTemps() {
     }
 
     // Define both lists for three possible card options and fill with random prices and cards
-    let cards = [];
-    let prices = [];
+    tempCards.length = 0;
+    tempPrices.length = 0;
 
     // Creates Cards
     for (let i = 0; i < 3; i++) {
@@ -50,13 +77,13 @@ function UpdateTemps() {
             suits[getRandomInt(0, 3)],
             ranks[getRandomInt(0, 12)],
         );
-        cards.push(CARD);
-        prices.push(getRandomInt(100, 500));
+        tempCards.push(CARD);
+        tempPrices.push(getRandomInt(100, 500));
     }
 
     for (let i = 0; i < containers.length; i++) {
         // Adds and Styles Card
-        cards[i].displayCard(containers[i]);
+        tempCards[i].displayCard(containers[i]);
 
         // TODO: changed manuel card styling to class?
         containers[i].children[0].style.width = "100%";
@@ -65,7 +92,7 @@ function UpdateTemps() {
         // Adds and Styles Text
         const TEMPPRICE = document.createElement("p");
         TEMPPRICE.classList.add("temp-price");
-        TEMPPRICE.innerText = prices[i] + " Chips";
+        TEMPPRICE.innerText = tempPrices[i] + " Chips";
         containers[i].appendChild(TEMPPRICE);
     }
 }
