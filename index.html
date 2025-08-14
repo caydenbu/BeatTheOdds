@@ -84,7 +84,7 @@
         </div>
 
         <div id="buff-menu">
-            <div id="scroller">
+            <div id="perm-scroller">
                 <div class="perm-chip" id="perm-copy">
                     <p class="perm-name">TEMPORARY PLACEHOLDER</p>
                     <div class="chip">
@@ -93,9 +93,14 @@
                     <p class="perm-amount">#/#</p>
                 </div>
             </div>
+            <div id="temp-scroller"></div>
             <div id="tabs">
-                <div id="card-tab"></div>
-                <div id="perm-tab"></div>
+                <div id="perm-tab" class="selected-tab" onclick="TabSwitch(0)">
+                    Perminant Buffs
+                </div>
+                <div id="card-tab" class="unselected-tab" onclick="TabSwitch(1)">
+                    Temporary Cards
+                </div>
             </div>
         </div>
         <!-- Table -->

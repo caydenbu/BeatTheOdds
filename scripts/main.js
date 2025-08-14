@@ -30,6 +30,7 @@ function newRound(postShop) {
     // close the shop if openened
     if (postShop) {
         endDiv.style.animation = "slideUp 1.5s ease-in-out forwards";
+        UpdateTempDisplay(); // Displays Bought Temporary Cards
     }
     // Resets values with new round
     playerLoss = false;
@@ -41,7 +42,7 @@ function newRound(postShop) {
     //deck = newDeck();
     // If deck is less than 10 cards it will create a new deck
     if (deck.length < 10) {
-        SendNotification("Cards Shuffled...", 2, shuffle)
+        SendNotification("Cards Shuffled...", 2, shuffle);
         deck = newDeck();
     }
 

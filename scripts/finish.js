@@ -82,6 +82,7 @@ function UpdateTemps() {
     }
 
     for (let i = 0; i < containers.length; i++) {
+        containers[i].style.display = "block"; // Resets if Card has Been bought before
         // Adds and Styles Card
         tempCards[i].displayCard(containers[i]);
 

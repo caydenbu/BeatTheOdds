@@ -1,4 +1,37 @@
-const SCROLLER = document.getElementById("scroller");
+const SCROLLER = document.getElementById("perm-scroller");
+const TEMPSCROLLER = document.getElementById("temp-scroller");
+
+function TabSwitch(selectedTab) {
+    const TABS = document.getElementById("tabs").children;
+    const SCROLLERS = document.getElementById("buff-menu").children;
+
+    // Switch to selected tab
+    TABS[selectedTab].classList.add("selected-tab");
+    TABS[selectedTab].classList.remove("unselected-tab");
+    SCROLLERS[selectedTab].style.display = "flex";
+
+    // Deselect other tab
+    TABS[Math.abs(selectedTab - 1)].classList.remove("selected-tab");
+    TABS[Math.abs(selectedTab - 1)].classList.add("unselected-tab");
+    SCROLLERS[Math.abs(selectedTab - 1)].style.display = "none";
+}
+
+// Temporary Buffs
+function UpdateTempDisplay() {
+    // Reset Contents
+    TEMPSCROLLER.innerHTML = "";
+
+    for (let i = 0; i < ownedTempCards.length; i++) {
+        // Adds and Styles Card
+        ownedTempCards[i].displayCard(TEMPSCROLLER);
+
+        // TODO: changed manuel card styling to class?
+        TEMPSCROLLER.children[i].style.width = "60%";
+        TEMPSCROLLER.children[i].style.cursor = "pointer";
+    }
+}
+
+// Perminant Buffs //
 const PERMCOPY = document.getElementById("perm-copy");
 // Remove the placeholder chip
 PERMCOPY.remove();

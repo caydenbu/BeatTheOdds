@@ -102,17 +102,17 @@ body {
     display: flex;
 }
 
-#scroller {
+#perm-scroller {
     width: 75%;
     height: 100%;
 
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 5%;
     overflow-y: auto;
 }
 
-.perm-chip{
+.perm-chip {
     width: 100%;
     aspect-ratio: 1/1;
     display: flex;
@@ -129,11 +129,12 @@ body {
 .perm-name {
     font-size: 1.5vw;
 }
+
 .perm-amount {
     font-size: 2vw;
 }
 
-.chip{
+.chip {
     width: 50%;
     aspect-ratio: 1/1;
     border-radius: 9999px;
@@ -145,18 +146,30 @@ body {
     transition: 0.2s ease-in-out;
 }
 
-.chip:hover{
+.chip:hover {
     transform: scale(102%) rotate(360deg);
-    box-shadow: 0px 0px 30px 05px rgb(0,0,0,0.8);
+    box-shadow: 0px 0px 30px 05px rgb(0, 0, 0, 0.8);
     cursor: pointer;
 }
 
-.chip div{
+.chip div {
     width: 70%;
     aspect-ratio: 1/1;
     border-radius: 9999px;
     border: solid 3px white;
     background-color: darkgreen;
+}
+
+#temp-scroller {
+    width: 75%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+    overflow-y: auto;
+    padding-top: 5%;
 }
 
 #tabs {
@@ -171,19 +184,26 @@ body {
     height: 50%;
     width: 100%;
 
-    background-color: #383838;
-    border: #5b5b5b solid 6px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 
+    font-family: monospace;
     color: white;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 1.5vw;
 }
 
-#tabs div p {
-    font-weight: bold;
+.unselected-tab {
+    background-color: #383838;
+    border: #5b5b5b solid 6px;
+}
+
+.selected-tab {
+    background-color: #5c5c5c;
+    border: #7d7d7d solid 6px;
 }
 
 #cards {
