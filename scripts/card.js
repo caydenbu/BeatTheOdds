@@ -6,37 +6,40 @@ class Card {
         this.score;
 
         //defaults face to 10 and ace cards to 11
-        if (this.rank === 'A') {
+        if (this.rank === "A") {
             this.score = 11;
-        } else if (['K', 'Q', 'J'].includes(this.rank)) {
+        } else if (["K", "Q", "J"].includes(this.rank)) {
             this.score = 10;
-        }else{
+        } else {
             this.score = this.rank;
         }
-
     }
-    displayCard(hand){
+    displayCard(hand) {
         // create all elements for each card
-        const card = document.createElement('div');
+        const card = document.createElement("div");
         card.classList.add("card");
 
         // Changes color according to suit
-        if(this.suit == "♦" || this.suit == "♥"){
+        if (this.suit == "♦" || this.suit == "♥") {
             card.classList.add("red");
         }
 
         // Adds ranks to the card
-        const rankTop = document.createElement("div")
+        const rankTop = document.createElement("div");
         rankTop.classList.add("rankTop");
-        if(this.rank==10){rankTop.style.fontFamily = "Slim-Dueces";} // if the rank is 10 change font to a slim font to compinsate for size diffrence
+        if (this.rank == 10) {
+            rankTop.style.fontFamily = "Slim-Dueces";
+        } // if the rank is 10 change font to a slim font to compinsate for size diffrence
         rankTop.innerHTML = this.rank;
 
-        const rankBottom = document.createElement("div")
+        const rankBottom = document.createElement("div");
         rankBottom.classList.add("rankBottom");
-        if(this.rank==10){rankBottom.style.fontFamily = "Slim-Dueces";} // if the rank is 10 change font to a slim font to compinsate for size diffrence
+        if (this.rank == 10) {
+            rankBottom.style.fontFamily = "Slim-Dueces";
+        } // if the rank is 10 change font to a slim font to compinsate for size diffrence
         rankBottom.innerHTML = this.rank;
 
-        const suitDiv = document.createElement("div")
+        const suitDiv = document.createElement("div");
         suitDiv.classList.add("suit");
         suitDiv.innerHTML = this.suit;
 
@@ -47,15 +50,15 @@ class Card {
         card.appendChild(rankBottom);
     }
 
-    displayHidden(hand){
+    displayHidden(hand) {
         // create all elements for each card
-        const card = document.createElement('div');
+        const card = document.createElement("div");
         card.classList.add("card");
         card.classList.add("hidden");
 
-        const border = document.createElement('div');
+        const border = document.createElement("div");
         border.classList.add("border");
-        const border2 = document.createElement('div');
+        const border2 = document.createElement("div");
         border2.classList.add("border");
 
         hand.appendChild(card);
@@ -65,35 +68,36 @@ class Card {
 }
 
 // Create Deck
-let suits = ["♣","♦","♥","♠"];
-let ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
+let suits = ["♣", "♦", "♥", "♠"];
+let ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 
-function newDeck(){
+function newDeck() {
     let deck = [];
     for (let i = 0; i < suits.length; i++) {
         for (let j = 0; j < ranks.length; j++) {
-            deck.push(new Card(suits[i],ranks[j]));
+            deck.push(new Card(suits[i], ranks[j]));
         }
     }
     return deck;
 }
 
-function drawCard(hand, deck, isPlayer){
+function drawCard(hand, deck, isPlayer) {
     let card = deck[0];
-    if(isPlayer){
+    if (isPlayer) {
         hand.push(card);
-    }else{
+    } else {
         // if its the dealer drawing add the card to the second to last spot
-        if(dealerHand.length==0){ // error catch for the first draw of the dealers hand
+        if (dealerHand.length == 0) {
+            // error catch for the first draw of the dealers hand
             hand.push(deck[0]);
-        }else{
-            const placeholder = dealerHand[dealerHand.length-1];
+        } else {
+            const placeholder = dealerHand[dealerHand.length - 1];
             hand.pop(); // removes and saves hidden card
-            hand.push(card); // adds new card 
+            hand.push(card); // adds new card
             hand.push(placeholder); // re adds hidden card to the end
         }
     }
-    deck.shift()
+    deck.shift();
 }
 
 const playerScoreCounter = document.getElementById("player-score");
@@ -101,14 +105,14 @@ const dealerScoreCounter = document.getElementById("dealer-score");
 
 let playerScore = 0;
 let dealerScore = 0;
-function calculateScore(gameOver){
+function calculateScore(gameOver) {
     playerScore = 0;
     dealerScore = 0;
 
     for (let i = 0; i < playerHand.length; i++) {
         playerScore += playerHand[i].score;
         // Changes 11 to 1 if needed
-        if(playerScore > 21 && playerHand[i].score == 11){
+        if (playerScore > 21 && playerHand[i].score == 11) {
             playerScore -= 10;
         }
     }
@@ -117,38 +121,39 @@ function calculateScore(gameOver){
     for (let i = 0; i < dealerHand.length; i++) {
         dealerScore += dealerHand[i].score;
         // Changes 11 to 1 if needed
-        if(dealerScore > 21 && dealerHand[i].score == 11){
+        if (dealerScore > 21 && dealerHand[i].score == 11) {
             dealerScore -= 10;
         }
     }
 
     // when game is over show the score of all cards not just the unhidden cards
-    if(!gameOver){
-        dealerScoreCounter.innerHTML = dealerScore-dealerHand[dealerHand.length-1].score + " + ?";
+    if (!gameOver) {
+        dealerScoreCounter.innerHTML =
+            dealerScore - dealerHand[dealerHand.length - 1].score + " + ?";
         // Shows dev hidden cards value when needed
         //dealerScoreCounter.innerHTML += " " + dealerHand[dealerHand.length-1].score;
-    }else{
+    } else {
         dealerScoreCounter.innerHTML = dealerScore; // show actual score when game is over and card is revealed
     }
-    
+
     // I player has 5 cards and is under 21 they win
-    if(playerHand.length == 5 && playerScore <= 21){
+    if (playerHand.length == 5 && playerScore <= 21) {
         playerWon = true;
         playerScore = 0;
         dealerScore = 0;
     }
-    if(dealerHand.length == 5 && dealerScore <= 21){
+    if (dealerHand.length == 5 && dealerScore <= 21) {
         playerLoss = true;
         dealerScore = 0;
         playerScore = 0;
     }
 
     // If player or dealers busts give the win to the corresponding winner and reset the scores
-    if(dealerScore > 21){
+    if (dealerScore > 21) {
         playerWon = true;
         playerScore = 0;
         dealerScore = 0;
-    }else if(playerScore > 21){
+    } else if (playerScore > 21) {
         playerLoss = true;
         dealerScore = 0;
     }
@@ -160,18 +165,18 @@ let dealerHand = [];
 const playerHandContainer = document.getElementById("player-hand");
 const dealerHandContainer = document.getElementById("dealer-hand");
 
-function updateCards(gameOver){
+function updateCards(gameOver) {
     playerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < playerHand.length; i++) {
-       playerHand[i].displayCard(playerHandContainer); // display every card in the players hand
+        playerHand[i].displayCard(playerHandContainer); // display every card in the players hand
     }
 
     dealerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < dealerHand.length; i++) {
-        if(i==dealerHand.length-1 && !gameOver){
+        if (i == dealerHand.length - 1 && !gameOver) {
             dealerHand[i].displayHidden(dealerHandContainer); // hides the second dealers card then shows the rest
-        }else{
-            dealerHand[i].displayCard(dealerHandContainer); 
+        } else {
+            dealerHand[i].displayCard(dealerHandContainer);
         }
     }
 }

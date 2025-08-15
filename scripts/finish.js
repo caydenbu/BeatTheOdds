@@ -210,6 +210,12 @@ function CalculateWins(didWin) {
         }
     } else {
         playerWins = 0;
+
+        // Removes temps cards if they lose because they are temporary duh
+        if (playerLoss) {
+            ownedTempCards.length = 0;
+            UpdateTempDisplay();
+        }
     }
 
     for (let i = 0; i < winCircles.length; i++) {

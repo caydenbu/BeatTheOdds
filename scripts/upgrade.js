@@ -28,6 +28,18 @@ function UpdateTempDisplay() {
         // TODO: changed manuel card styling to class?
         TEMPSCROLLER.children[i].style.width = "60%";
         TEMPSCROLLER.children[i].style.cursor = "pointer";
+
+        // Click listener directly on the element
+        TEMPSCROLLER.children[i].addEventListener("click", () => {
+            // Adds card to player hands
+            ownedTempCards[i].displayCard(playerHandContainer);
+            playerHand.push(ownedTempCards[i]);
+            calculateScore(false); //gets new score
+
+            // Removes temporary card from list
+            ownedTempCards.splice(i, 1);
+            UpdateTempDisplay();
+        });
     }
 }
 

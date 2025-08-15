@@ -106,7 +106,7 @@ body {
     width: 75%;
     height: 100%;
 
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 5%;
     overflow-y: auto;
@@ -164,7 +164,7 @@ body {
     width: 75%;
     height: 100%;
 
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     gap: 5%;
