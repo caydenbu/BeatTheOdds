@@ -158,6 +158,7 @@ function updateUpgrades(index) {
             upgrades[index] + "/" + maxUpgrades[index];
 
         checkAnimation(index);
+        UpdatePermDisplay();
     } else {
         failAnimation(index);
     }

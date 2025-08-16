@@ -17,9 +17,17 @@ function TabSwitch(selectedTab) {
 }
 
 // Temporary Buffs
+// TODO: Sort temp cards by rank
 function UpdateTempDisplay() {
     // Reset Contents
     TEMPSCROLLER.innerHTML = "";
+
+    // Display an outline of a card when you have no temp cards for looks idk
+    if (ownedTempCards.length == 0) {
+        const OUTLINE = document.createElement("div");
+        OUTLINE.classList.add("outline");
+        TEMPSCROLLER.appendChild(OUTLINE);
+    }
 
     for (let i = 0; i < ownedTempCards.length; i++) {
         // Adds and Styles Card
@@ -163,3 +171,14 @@ for (let i = 0; i < upgrades.length; i++) {
 
     SCROLLER.appendChild(chip);
 }
+
+function UpdatePermDisplay() {
+    const AMOUNTS = document.getElementsByClassName("perm-amount");
+    for (let i = 0; i < upgrades.length; i++) {
+        AMOUNTS[i].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
+    }
+}
+
+// Runs initial display before game starts
+UpdateTempDisplay();
+UpdatePermDisplay();

@@ -1,15 +1,14 @@
 @font-face {
-    font-family: 'Dueces';
+    font-family: "Dueces";
     src: url(../fonts/CARDC___.TTF);
 }
+
 @font-face {
-    font-family: 'Slim-Dueces';
+    font-family: "Slim-Dueces";
     src: url(../fonts/CardCharactersNarrowFigures.ttf);
 }
 
-
-
-.card{
+.card {
     width: 20%;
     aspect-ratio: 1/1.6;
     background-color: white;
@@ -18,15 +17,15 @@
     transition: 0.2s ease-in-out;
 }
 
-.card:hover{
+.card:hover {
     transform: translateY(-0.5vw);
 }
 
-.red{
+.red {
     color: #cc2222;
 }
 
-.rankTop{
+.rankTop {
     position: relative;
     padding-top: 3%;
     padding-left: 5%;
@@ -37,7 +36,7 @@
     font-family: Dueces;
 }
 
-.rankBottom{
+.rankBottom {
     position: relative;
     padding-left: 5%;
     width: 100%;
@@ -48,7 +47,7 @@
     font-family: Dueces;
 }
 
-.suit{
+.suit {
     width: 100%;
     height: 10%;
     text-align: center;
@@ -57,14 +56,27 @@
     font-family: Dueces;
 }
 
-.hidden{
-    background-color: rgb(153, 26, 26) ;
+.hidden {
+    background-color: rgb(153, 26, 26);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.border{
+.outline {
+    width: 60%;
+    aspect-ratio: 1/1.6;
+    background-color: transparent;
+    border-radius: 0.4vw;
+    border: 3px dashed white;
+    transition: 0.2s ease-in-out;
+}
+
+.outline:hover {
+    transform: translateY(-0.5vw);
+}
+
+.border {
     width: 80%;
     height: 88%;
     border: 2px dashed whitesmoke;
