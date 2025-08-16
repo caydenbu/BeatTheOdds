@@ -43,12 +43,12 @@ const targetWord = "GAMBLE";
 
 let animationGoing = false;
 // Toggle Animation functions
-startButton.addEventListener("mouseover", function () {
+startButton.addEventListener("mouseover", function() {
     animationGoing = true;
     GlitchAnimation();
 });
 
-startButton.addEventListener("mouseout", function () {
+startButton.addEventListener("mouseout", function() {
     // Reset the button text
     animationGoing = false;
     startButton.innerHTML = "START";

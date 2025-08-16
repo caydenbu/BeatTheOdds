@@ -111,18 +111,35 @@ function calculateScore(gameOver) {
 
     for (let i = 0; i < playerHand.length; i++) {
         playerScore += playerHand[i].score;
-        // Changes 11 to 1 if needed
-        if (playerScore > 21 && playerHand[i].score == 11) {
-            playerScore -= 10;
+    }
+
+    // Switches Ace from 11 to 1 if over 21
+    if (playerScore > 21) {
+        for (let i = 0; i < playerHand.length; i++) {
+            if (playerScore <= 21) {
+                break;
+            }
+            if (playerHand[i].score == 11) {
+                playerScore -= 10;
+            }
         }
     }
+
     playerScoreCounter.innerHTML = playerScore;
 
     for (let i = 0; i < dealerHand.length; i++) {
         dealerScore += dealerHand[i].score;
-        // Changes 11 to 1 if needed
-        if (dealerScore > 21 && dealerHand[i].score == 11) {
-            dealerScore -= 10;
+    }
+
+    // Switches Ace from 11 to 1 if over 21
+    if (dealerScore > 21) {
+        for (let i = 0; i < dealerHand.length; i++) {
+            if (dealerScore <= 21) {
+                break;
+            }
+            if (dealerHand[i].score == 11) {
+                dealerScore -= 10;
+            }
         }
     }
 

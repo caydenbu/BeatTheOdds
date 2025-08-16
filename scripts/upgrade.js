@@ -17,10 +17,12 @@ function TabSwitch(selectedTab) {
 }
 
 // Temporary Buffs
-// TODO: Sort temp cards by rank
 function UpdateTempDisplay() {
     // Reset Contents
     TEMPSCROLLER.innerHTML = "";
+
+    // Sort cards by rank
+    ownedTempCards.sort((a, b) => a.score - b.score);
 
     // Display an outline of a card when you have no temp cards for looks idk
     if (ownedTempCards.length == 0) {
@@ -32,10 +34,7 @@ function UpdateTempDisplay() {
     for (let i = 0; i < ownedTempCards.length; i++) {
         // Adds and Styles Card
         ownedTempCards[i].displayCard(TEMPSCROLLER);
-
-        // TODO: changed manuel card styling to class?
-        TEMPSCROLLER.children[i].style.width = "60%";
-        TEMPSCROLLER.children[i].style.cursor = "pointer";
+        TEMPSCROLLER.children[i].classList.add("tempscroller");
 
         // Click listener directly on the element
         TEMPSCROLLER.children[i].addEventListener("click", () => {

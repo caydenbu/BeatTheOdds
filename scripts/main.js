@@ -6,12 +6,20 @@ let playerWins = 0;
 deck = newDeck();
 
 function hit() {
+    // Stops player from drawing after game loss
+    if (playerWon || playerLoss) {
+        return;
+    }
     drawCard(playerHand, deck, true);
     update();
 }
 
 const standBtn = document.getElementById("stand");
 function stand() {
+    // Stops player from drawing after game loss
+    if (playerWon || playerLoss) {
+        return;
+    }
     if (playerScore >= dealerScore) {
         // If it does not make sense for dealer to draw they will ignore the stand
         drawCard(dealerHand, deck, false);

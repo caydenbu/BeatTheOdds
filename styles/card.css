@@ -63,6 +63,16 @@
     align-items: center;
 }
 
+.tempshop {
+    width: 100%;
+    cursor: pointer;
+}
+
+.tempscroller {
+    width: 60%;
+    cursor: pointer;
+}
+
 .outline {
     width: 60%;
     aspect-ratio: 1/1.6;

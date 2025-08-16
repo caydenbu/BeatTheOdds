@@ -47,7 +47,15 @@ function BuyTemp(tempIndex) {
             tempIndex
         ].style.display = "none";
     } else {
-        // TODO: Add a shake affect to the card if you cany buy it
+        // Shake when you cant buy it
+        const containers = document.getElementsByClassName("card-container");
+
+        // Reset animation state
+        containers[tempIndex].style.animation = "none";
+        void containers[tempIndex].offsetWidth;
+
+        containers[tempIndex].style.animation = "shake 0.7s ease-in-out 0s 1";
+
         SendNotification(
             "You can not afford that card (" +
             coins +
@@ -85,10 +93,7 @@ function UpdateTemps() {
         containers[i].style.display = "block"; // Resets if Card has Been bought before
         // Adds and Styles Card
         tempCards[i].displayCard(containers[i]);
-
-        // TODO: changed manuel card styling to class?
-        containers[i].children[0].style.width = "100%";
-        containers[i].children[0].style.cursor = "pointer";
+        containers[i].children[0].classList.add("tempshop");
 
         // Adds and Styles Text
         const TEMPPRICE = document.createElement("p");
@@ -120,35 +125,13 @@ const checkboxes = document.querySelectorAll(".checkbox");
 
 checkboxes.forEach((checkbox, index) => {
     checkbox.addEventListener("click", () => {
-        permanentUpgrade(index);
+        updateUpgrades(index);
     });
 });
 
 let upgrades = [0, 0, 0, 0, 0];
 const maxUpgrades = [9, 9, 5, 5, 5];
 const upgradeCost = [500, 800, 1000, 1000, 1500];
-
-// todo: why is this here
-function permanentUpgrade(index) {
-    switch (index) {
-        case 0:
-            updateUpgrades(index);
-            break;
-        case 1:
-            updateUpgrades(index);
-            break;
-        case 2:
-            updateUpgrades(index);
-            break;
-        case 3:
-            updateUpgrades(index);
-            break;
-        case 4:
-            updateUpgrades(index);
-            break;
-    }
-    coinCounter.innerHTML = coins + " Chips";
-}
 
 function updateUpgrades(index) {
     if (coins >= upgradeCost[index] && upgrades[index] != maxUpgrades[index]) {
@@ -162,10 +145,12 @@ function updateUpgrades(index) {
     } else {
         failAnimation(index);
     }
+    coinCounter.innerHTML = coins + " Chips";
 }
 
 function checkAnimation(index) {
     checkboxes[index].style.animation = "checkboxChecked 0.5s ease-in-out";
+    coinCounter.innerHTML = coins + " Chips";
 
     // Remove the animation after it's done
     checkboxes[index].addEventListener(
