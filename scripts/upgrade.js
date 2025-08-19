@@ -26,9 +26,11 @@ function UpdateTempDisplay() {
 
     // Display an outline of a card when you have no temp cards for looks idk
     if (ownedTempCards.length == 0) {
-        const OUTLINE = document.createElement("div");
-        OUTLINE.classList.add("outline");
-        TEMPSCROLLER.appendChild(OUTLINE);
+        for (let i = 0; i < 3; i++) {
+            const OUTLINE = document.createElement("div");
+            OUTLINE.classList.add("outline");
+            TEMPSCROLLER.appendChild(OUTLINE);
+        }
     }
 
     for (let i = 0; i < ownedTempCards.length; i++) {
@@ -41,7 +43,7 @@ function UpdateTempDisplay() {
             // Adds card to player hands
             ownedTempCards[i].displayCard(playerHandContainer);
             playerHand.push(ownedTempCards[i]);
-            calculateScore(false); //gets new score
+            update();
 
             // Removes temporary card from list
             ownedTempCards.splice(i, 1);

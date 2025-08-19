@@ -54,6 +54,8 @@
     <menu id="Settings-Screen">
         <p class="settings-title">Settings</p>
 
+        <p class="settings-sub">Audio Settings</p>
+        <hr />
         <div class="settings-slider">
             <label for="slider">Music</label>
             <input type="range" id="music-slider" name="music-volume" min="0" max="100" />
@@ -62,6 +64,20 @@
             <label for="slider">Sound fx</label>
             <input type="range" id="sfx-slider" name="sfx-volume" min="0" max="100" />
         </div>
+
+        <p class="settings-sub">
+            Gameplay Rules <span>(not recommended to change)</span>
+        </p>
+        <hr />
+        <label>
+            Toggle Five Card Charlie
+            <input type="checkbox" id="fiveCardCharlie" />
+        </label>
+        <label>
+            Normal Blackjack Stand Rules
+            <input type="checkbox" id="standRules" />
+        </label>
+
         <div id="settings-exit" onclick="ToggleSettings()">Exit</div>
     </menu>
     <!-- Notification Box -->

@@ -26,3 +26,16 @@ SFXSLIDER.addEventListener("input", () => {
 // sets volume to previously assigned user volume (defaults to .5 if never changed I think)
 jazzBackground.volume = MUSICSLIDER.value / 100;
 shuffle.volume = SFXSLIDER.value / 100;
+
+// Gameplay Settings
+const CHARLIECHECKBOX = document.getElementById("fiveCardCharlie");
+CHARLIECHECKBOX.addEventListener("change", function () {
+    if (this.checked) {
+        charlieEnabled = true;
+    } else {
+        charlieEnabled = false;
+    }
+});
+
+// TODO: do this v
+// Change Stand Ruling
