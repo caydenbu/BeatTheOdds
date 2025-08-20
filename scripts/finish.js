@@ -37,6 +37,10 @@ let tempPrices = [];
 
 function BuyTemp(tempIndex) {
     if (coins >= tempPrices[tempIndex]) {
+        const cashReg = new Audio("./sfx/cashReg.wav");
+        cashReg.volume = sfxVol * 0.1;
+        cashReg.play();
+
         ownedTempCards.push(tempCards[tempIndex]);
         // Updates coins
         coins -= tempPrices[tempIndex];
@@ -135,6 +139,10 @@ const upgradeCost = [500, 800, 1000, 1000, 1500];
 
 function updateUpgrades(index) {
     if (coins >= upgradeCost[index] && upgrades[index] != maxUpgrades[index]) {
+        const cashReg = new Audio("./sfx/cashReg.wav");
+        cashReg.volume = sfxVol * 0.1;
+        cashReg.play();
+
         coins -= upgradeCost[index];
         upgrades[index]++;
         checkboxes[index].innerHTML =

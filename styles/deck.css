@@ -1,8 +1,8 @@
-#Deck-Container{
+#Deck-Container {
     height: 100vh;
     width: 100vw;
     position: absolute;
-    
+
     background-color: rgba(0, 0, 0, 0);
     z-index: 99;
 
@@ -11,18 +11,18 @@
     justify-content: center;
 }
 
-#Deck-Screen{
+#Deck-Screen {
     background-color: rgb(94, 4, 4);
     width: 150vh;
     aspect-ratio: 3/2;
-    box-shadow: 0px 0px 100px 100px black;  
+    box-shadow: 0px 0px 100px 100px black;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#Deck-Screen .border{
+#Deck-Screen .border {
     width: 95%;
     height: 90%;
     border: 3px dashed rgb(255, 255, 255);
@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 
-#main-border{
+#main-border {
     display: flex;
     flex-direction: column;
     gap: 2%;
@@ -41,8 +41,7 @@
     padding: 2%;
 }
 
-.sets{
-
+.sets {
     width: 100%;
     height: 50%;
 
@@ -52,29 +51,29 @@
     gap: 0.5%;
 }
 
-.sets .card{
+.sets .card {
     transition: 0.3 ease-in-out;
 }
 
-.sets .card:hover{
+.sets .card:hover {
     transform: scale(106%);
 }
 
 /* styles specificlly added towards deck cards so it looks nicer*/
 
-.sets div{
+.sets div {
     border-radius: 0.5vw;
 }
 
-.sets .rankTop{
+.sets .rankTop {
     font-size: 1.5vw;
 }
 
-.sets .rankBottom{
+.sets .rankBottom {
     font-size: 1.5vw;
 }
 
-#exit{
+#exit {
     position: absolute;
     width: 15vw;
     height: 8vh;
@@ -95,7 +94,6 @@
     cursor: pointer;
 }
 
-#exit:hover{
+#exit:hover {
     background-color: rgb(131, 8, 8);
 }
-

@@ -15,6 +15,7 @@ function hit() {
 }
 
 const standBtn = document.getElementById("stand");
+let standEnabled = false;
 function stand() {
     // Stops player from drawing after game loss
     if (playerWon || playerLoss) {
@@ -31,6 +32,13 @@ function stand() {
     }
 
     update();
+
+    // Sets do normal blackjack stand rules I think
+    if (standEnabled) {
+        setTimeout(() => {
+            stand();
+        }, 500); // 500 ms = 0.5 seconds
+    }
 }
 
 const endDiv = document.getElementById("Win-Screen");

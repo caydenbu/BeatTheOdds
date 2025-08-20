@@ -6,6 +6,6 @@ const shuffle = new Audio("./sfx/shuffle.wav");
 shuffle.volume = sfxVol;
 
 const jazzBackground = new Audio("./sfx/wJazz.mp3");
-jazzBackground.volume = musicVol;
+const jazzMult = 0.05;
+jazzBackground.volume = musicVol * jazzMult;
 jazzBackground.loop = true;
-
