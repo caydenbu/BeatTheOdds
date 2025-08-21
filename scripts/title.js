@@ -79,5 +79,10 @@ async function GlitchAnimation() {
             targetWord[i] +
             currentText.substring(i + 1);
         startButton.innerHTML = currentText;
+
+        //Fixes Bug where E from gamble sticks
+        if (!animationGoing) {
+            startButton.innerHTML = "START";
+        }
     }
 }

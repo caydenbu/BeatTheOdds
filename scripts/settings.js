@@ -29,7 +29,7 @@ shuffle.volume = SFXSLIDER.value / 100;
 
 // Gameplay Settings
 const CHARLIECHECKBOX = document.getElementById("fiveCardCharlie");
-CHARLIECHECKBOX.addEventListener("change", function() {
+CHARLIECHECKBOX.addEventListener("change", function () {
     if (this.checked) {
         charlieEnabled = true;
     } else {
@@ -38,7 +38,7 @@ CHARLIECHECKBOX.addEventListener("change", function() {
 });
 
 const STANDCHECKBOX = document.getElementById("standRules");
-STANDCHECKBOX.addEventListener("change", function() {
+STANDCHECKBOX.addEventListener("change", function () {
     if (this.checked) {
         standEnabled = true;
     } else {

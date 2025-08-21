@@ -7,6 +7,7 @@
     padding: 20px;
     color: white;
     z-index: 101;
+    width: 80%;
 }
 
 #portrait-reminder p {
@@ -14,8 +15,6 @@
 }
 
 @media (orientation: portrait) {
-
-    /* Your CSS rules for when the screen height is more than the width */
     #portrait-reminder {
         display: block;
     }

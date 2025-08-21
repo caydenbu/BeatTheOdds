@@ -200,6 +200,7 @@ function CalculateWins(didWin) {
                 bestStreak * 100 +
                 " base chips",
                 5,
+                notiSound,
             );
         }
     } else {

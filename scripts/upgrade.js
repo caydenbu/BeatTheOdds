@@ -41,6 +41,10 @@ function UpdateTempDisplay() {
         // Click listener directly on the element
         TEMPSCROLLER.children[i].addEventListener("click", () => {
             // Adds card to player hands
+            const pop = new Audio("./sfx/pop.wav");
+            pop.volume = sfxVol;
+            pop.play();
+
             ownedTempCards[i].displayCard(playerHandContainer);
             playerHand.push(ownedTempCards[i]);
             update();
@@ -90,11 +94,15 @@ for (let i = 0; i < upgrades.length; i++) {
         grabOffsetY = 0;
     let placeholder = null;
 
-    chip.addEventListener("mousedown", (e) => {
+    chip.style.cursor = "grab";
+    chip.style.touchAction = "none";
+
+    chip.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+
         isDragging = true;
         chip.style.cursor = "grabbing";
 
-        // hide name + upgrade count
         chip.children[0].style.visibility = "hidden";
         chip.children[2].style.visibility = "hidden";
 
@@ -108,7 +116,7 @@ for (let i = 0; i < upgrades.length; i++) {
         placeholder.style.visibility = "hidden";
         chip.parentNode.insertBefore(placeholder, chip.nextSibling);
 
-        // position chip on cursor
+        // position chip on pointer
         chip.style.position = "absolute";
         chip.style.left = `${chipRect.left - scrollerRect.left}px`;
         chip.style.top = `${chipRect.top - scrollerRect.top}px`;
@@ -121,22 +129,42 @@ for (let i = 0; i < upgrades.length; i++) {
         grabOffsetX = e.clientX - chipRect.left;
         grabOffsetY = e.clientY - chipRect.top;
 
+        try {
+            chip.setPointerCapture(e.pointerId);
+        } catch { }
+
         e.preventDefault();
     });
 
-    const onMouseMove = (e) => {
+    chip.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
         const scrollerRect = SCROLLER.getBoundingClientRect();
         chip.style.left = `${e.clientX - scrollerRect.left - grabOffsetX}px`;
         chip.style.top = `${e.clientY - scrollerRect.top - grabOffsetY}px`;
+    });
+
+    const finalizePointer = () => {
+        // finalize snap + restore
+        placeholder.replaceWith(chip);
+        placeholder = null;
+
+        chip.style.position = "";
+        chip.style.left = "";
+        chip.style.top = "";
+        chip.style.width = "";
+        chip.style.height = "";
+        chip.style.zIndex = "";
+        chip.style.transition = "";
+
+        chip.children[0].style.visibility = "";
+        chip.children[2].style.visibility = "";
     };
 
-    const onMouseUp = () => {
+    const pointerUpOrCancel = (e) => {
         if (!isDragging) return;
         isDragging = false;
         chip.style.cursor = "grab";
 
-        // snap back
         const scrollerRect = SCROLLER.getBoundingClientRect();
         const phRect = placeholder.getBoundingClientRect();
 
@@ -144,32 +172,15 @@ for (let i = 0; i < upgrades.length; i++) {
         chip.style.left = `${phRect.left - scrollerRect.left}px`;
         chip.style.top = `${phRect.top - scrollerRect.top}px`;
 
-        const finalize = () => {
-            placeholder.replaceWith(chip);
-            placeholder = null;
+        chip.addEventListener("transitionend", finalizePointer, { once: true });
 
-            // restore normal flow
-            chip.style.position = "";
-            chip.style.left = "";
-            chip.style.top = "";
-            chip.style.width = "";
-            chip.style.height = "";
-            chip.style.zIndex = "";
-            chip.style.transition = "";
-
-            // show name + upgrade count again
-            chip.children[0].style.visibility = "";
-            chip.children[2].style.visibility = "";
-
-            chip.removeEventListener("transitionend", finalize);
-        };
-
-        chip.addEventListener("transitionend", finalize, { once: true });
+        try {
+            chip.releasePointerCapture(e.pointerId);
+        } catch { }
     };
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-
+    chip.addEventListener("pointerup", pointerUpOrCancel);
+    chip.addEventListener("pointercancel", pointerUpOrCancel);
     SCROLLER.appendChild(chip);
 }
 
