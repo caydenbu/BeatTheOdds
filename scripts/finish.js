@@ -62,10 +62,10 @@ function BuyTemp(tempIndex) {
 
         SendNotification(
             "You can not afford that card (" +
-            coins +
-            "/" +
-            tempPrices[tempIndex] +
-            " chips)",
+                coins +
+                "/" +
+                tempPrices[tempIndex] +
+                " chips)",
             2,
         );
     }
@@ -90,7 +90,14 @@ function UpdateTemps() {
             ranks[getRandomInt(0, 12)],
         );
         tempCards.push(CARD);
-        tempPrices.push(getRandomInt(100, 500));
+        // Scale as you progress through rounds
+        const scalingFactor = 4;
+        let price =
+            200 +
+            ((100 * playerWins) / scalingFactor +
+                (bestStreak / scalingFactor) * 2);
+        price = Math.round(price);
+        tempPrices.push(getRandomInt(price, price + 300));
     }
 
     for (let i = 0; i < containers.length; i++) {
@@ -115,12 +122,12 @@ async function coinUpdate() {
     if (playerWon) {
         coinIncrease *= playerWins + 1;
     }
-    coinIncrease += bestStreak * 100;
+    coinIncrease += bestStreak * 50;
 
     // Slow Increase animation
     for (let i = 0; i < 100; i++) {
         coins += coinIncrease / 100;
-        coinCounter.innerHTML = coins + " Chips";
+        coinCounter.innerHTML = Math.round(coins) + " Chips";
         await wait(10);
     }
 }
@@ -195,10 +202,10 @@ function CalculateWins(didWin) {
             bestStreak = playerWins;
             SendNotification(
                 "New Longest Streak!! (" +
-                bestStreak +
-                ") + " +
-                bestStreak * 100 +
-                " base chips",
+                    bestStreak +
+                    ") + " +
+                    bestStreak * 50 +
+                    " base chips",
                 5,
                 notiSound,
             );
