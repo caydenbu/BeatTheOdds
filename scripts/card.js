@@ -189,6 +189,8 @@ function updateCards(gameOver) {
     playerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < playerHand.length; i++) {
         playerHand[i].displayCard(playerHandContainer); // display every card in the players hand
+        playerHandContainer.children[i].classList.add("player-card");
+        playerHandContainer.children[i].id = i;
     }
 
     dealerHandContainer.innerHTML = ""; // resets cards
@@ -197,6 +199,7 @@ function updateCards(gameOver) {
             dealerHand[i].displayHidden(dealerHandContainer); // hides the second dealers card then shows the rest
         } else {
             dealerHand[i].displayCard(dealerHandContainer);
+            dealerHandContainer.children[i].classList.add("dealer-card");
         }
     }
 }

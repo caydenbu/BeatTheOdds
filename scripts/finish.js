@@ -140,6 +140,7 @@ checkboxes.forEach((checkbox, index) => {
     });
 });
 
+let usedUpgrades = [0, 0, 0, 0, 0];
 let upgrades = [0, 0, 0, 0, 0];
 const maxUpgrades = [9, 9, 5, 5, 5];
 const upgradeCost = [500, 800, 1000, 1000, 1500];
@@ -213,10 +214,14 @@ function CalculateWins(didWin) {
     } else {
         playerWins = 0;
 
-        // Removes temps cards if they lose because they are temporary duh
+        // Resets all needed values;
         if (playerLoss) {
+            // Removes temps cards if they lose because they are temporary duh
             ownedTempCards.length = 0;
             UpdateTempDisplay();
+
+            // Resets used upgrades for this round;
+            usedUpgrades = [0, 0, 0, 0, 0];
         }
     }
 

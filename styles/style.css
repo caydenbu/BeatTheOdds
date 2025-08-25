@@ -153,12 +153,21 @@ body {
     cursor: pointer;
 }
 
-.chip div {
+.chip-inner {
     width: 70%;
     aspect-ratio: 1/1;
     border-radius: 9999px;
     border: solid 3px white;
     background-color: darkgreen;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 10%;
+    aspect-ratio: 1/1;
 }
 
 #temp-scroller {

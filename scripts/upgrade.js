@@ -70,6 +70,7 @@ const CHIPNAME = [
     "Change Rank",
 ];
 const CHIPCOLOR = ["red", "green", "blue", "darkorchid", "rgb(20,20,20)"];
+
 const INSIDECHIPCOLOR = [
     "darkred",
     "darkgreen",
@@ -77,11 +78,17 @@ const INSIDECHIPCOLOR = [
     "darkviolet",
     "black",
 ];
+// inits for card saving for chip usage
+let playerCards = [];
+let dealerCards = [];
+let hidden;
+let collidedCard = null;
 
 const TEMPLATE = PERMCOPY.cloneNode(true);
 for (let i = 0; i < upgrades.length; i++) {
     const chip = TEMPLATE.cloneNode(true);
     chip.removeAttribute("id");
+    chip.id = i; // Needed for later refrence
 
     chip.children[0].textContent = CHIPNAME[i]; // name
     chip.children[1].style.backgroundColor = CHIPCOLOR[i]; // outer ring
@@ -98,6 +105,11 @@ for (let i = 0; i < upgrades.length; i++) {
     chip.style.touchAction = "none";
 
     chip.addEventListener("pointerdown", (e) => {
+        // Saves cards to use the chips on
+        playerCards = document.querySelectorAll(".player-card");
+        dealerCards = document.querySelectorAll(".dealer-card");
+        hidden = document.querySelectorAll(".hidden");
+
         if (e.pointerType === "mouse" && e.button !== 0) return;
 
         isDragging = true;
@@ -110,6 +122,7 @@ for (let i = 0; i < upgrades.length; i++) {
         const chipRect = chip.getBoundingClientRect();
 
         // placeholder
+
         placeholder = document.createElement("div");
         placeholder.style.width = `${chipRect.width}px`;
         placeholder.style.height = `${chipRect.height}px`;
@@ -131,16 +144,21 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.setPointerCapture(e.pointerId);
-        } catch { }
+        } catch {}
 
         e.preventDefault();
     });
 
     chip.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
+
+        // move chip
         const scrollerRect = SCROLLER.getBoundingClientRect();
         chip.style.left = `${e.clientX - scrollerRect.left - grabOffsetX}px`;
         chip.style.top = `${e.clientY - scrollerRect.top - grabOffsetY}px`;
+
+        // Card Collision
+        cardCollisionCheck(chip);
     });
 
     const finalizePointer = () => {
@@ -176,7 +194,25 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.releasePointerCapture(e.pointerId);
-        } catch { }
+        } catch {}
+
+        // actual chip and card logic
+        if (collidedCard != null) {
+            collidedCard.style.backgroundColor = "white";
+
+            //reroll card
+            if (chip.id == 0 && usedUpgrades[0] < upgrades[0]) {
+                let rerolledCard = new Card(
+                    suits[getRandomInt(0, 3)],
+                    ranks[getRandomInt(0, 12)],
+                );
+                playerHand[collidedCard.id] = rerolledCard;
+                update();
+
+                usedUpgrades[i]++;
+                UpdatePermDisplay();
+            }
+        }
     };
 
     chip.addEventListener("pointerup", pointerUpOrCancel);
@@ -184,10 +220,41 @@ for (let i = 0; i < upgrades.length; i++) {
     SCROLLER.appendChild(chip);
 }
 
+function cardCollisionCheck(chip) {
+    // sets the chip collision rectangle to a way smaller box to remove incorrect collisions
+    const chipRec =
+        chip.children[1].children[0].children[0].getBoundingClientRect();
+
+    let didColide = false;
+    for (let i = 0; i < playerCards.length; i++) {
+        if (isColliding(playerCards[i].getBoundingClientRect(), chipRec)) {
+            playerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
+            collidedCard = playerCards[i]; // allows release to know last hovered chip
+            didColide = true;
+        } else {
+            playerCards[i].style.backgroundColor = "white";
+            // TODO: make a better fix for for this
+        }
+    }
+    if (!didColide) {
+        collidedCard = null;
+    }
+}
+
+function isColliding(r1, r2) {
+    return !(
+        r1.top > r2.bottom ||
+        r1.bottom < r2.top ||
+        r1.left > r2.right ||
+        r1.right < r2.left
+    );
+}
+
 function UpdatePermDisplay() {
     const AMOUNTS = document.getElementsByClassName("perm-amount");
     for (let i = 0; i < upgrades.length; i++) {
-        AMOUNTS[i].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
+        AMOUNTS[i].innerHTML =
+            upgrades[i] - usedUpgrades[i] + "/" + maxUpgrades[i];
     }
 }
 

@@ -10,3 +10,6 @@
   -change perminant buff upgrade purchase sound to like a level up sound but anything diffrent from the cha ching sound please dear god
 
 BUGS
+  - total chips left is wrong sometimes (its because its changing the wrong index while the chip is stilling gliding back to its og spot)
+
+
