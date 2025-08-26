@@ -55,6 +55,7 @@ class Card {
         const card = document.createElement("div");
         card.classList.add("card");
         card.classList.add("hidden");
+        card.id = "hidden";
 
         const border = document.createElement("div");
         border.classList.add("border");
@@ -144,7 +145,7 @@ function calculateScore(gameOver) {
     }
 
     // when game is over show the score of all cards not just the unhidden cards
-    if (!gameOver) {
+    if (!gameOver && isHidden) {
         dealerScoreCounter.innerHTML =
             dealerScore - dealerHand[dealerHand.length - 1].score + " + ?";
         // Shows dev hidden cards value when needed
@@ -185,6 +186,8 @@ let dealerHand = [];
 const playerHandContainer = document.getElementById("player-hand");
 const dealerHandContainer = document.getElementById("dealer-hand");
 
+let isHidden = true;
+
 function updateCards(gameOver) {
     playerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < playerHand.length; i++) {
@@ -195,11 +198,12 @@ function updateCards(gameOver) {
 
     dealerHandContainer.innerHTML = ""; // resets cards
     for (let i = 0; i < dealerHand.length; i++) {
-        if (i == dealerHand.length - 1 && !gameOver) {
+        if (i == dealerHand.length - 1 && !gameOver && isHidden) {
             dealerHand[i].displayHidden(dealerHandContainer); // hides the second dealers card then shows the rest
         } else {
             dealerHand[i].displayCard(dealerHandContainer);
             dealerHandContainer.children[i].classList.add("dealer-card");
+            dealerHandContainer.children[i].id = i;
         }
     }
 }

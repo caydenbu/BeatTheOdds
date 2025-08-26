@@ -83,6 +83,7 @@ let playerCards = [];
 let dealerCards = [];
 let hidden;
 let collidedCard = null;
+let isPlayerCard;
 
 const TEMPLATE = PERMCOPY.cloneNode(true);
 for (let i = 0; i < upgrades.length; i++) {
@@ -144,7 +145,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.setPointerCapture(e.pointerId);
-        } catch {}
+        } catch { }
 
         e.preventDefault();
     });
@@ -176,6 +177,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         chip.children[0].style.visibility = "";
         chip.children[2].style.visibility = "";
+        UpdatePermDisplay();
     };
 
     const pointerUpOrCancel = (e) => {
@@ -194,7 +196,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.releasePointerCapture(e.pointerId);
-        } catch {}
+        } catch { }
 
         // actual chip and card logic
         if (collidedCard != null) {
@@ -206,11 +208,32 @@ for (let i = 0; i < upgrades.length; i++) {
                     suits[getRandomInt(0, 3)],
                     ranks[getRandomInt(0, 12)],
                 );
-                playerHand[collidedCard.id] = rerolledCard;
+                // player logic
+                if (isPlayerCard) {
+                    playerHand[collidedCard.id] = rerolledCard;
+                    // dealer logic;
+                } else {
+                    dealerHand[collidedCard.id] = rerolledCard;
+                }
                 update();
+                usedUpgrades[0]++;
+            }
+            // Destroy Card
+            if (chip.id == 1 && usedUpgrades[1] < upgrades[1]) {
+                // player logic
+                if (isPlayerCard) {
+                    playerHand.splice(collidedCard.id, 1);
+                } else {
+                    dealerHand.splice(collidedCard.id, 1);
+                }
 
-                usedUpgrades[i]++;
-                UpdatePermDisplay();
+                update();
+                usedUpgrades[1]++;
+            }
+            if (chip.id == 2 && usedUpgrades[1] < upgrades[2]) {
+                isHidden = false;
+                update();
+                usedUpgrades[2]++;
             }
         }
     };
@@ -226,16 +249,46 @@ function cardCollisionCheck(chip) {
         chip.children[1].children[0].children[0].getBoundingClientRect();
 
     let didColide = false;
+    // all player cards
     for (let i = 0; i < playerCards.length; i++) {
+        // Ignores for abilities that dont apply to player
+        if (chip.id == 2) break;
+
         if (isColliding(playerCards[i].getBoundingClientRect(), chipRec)) {
             playerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
             collidedCard = playerCards[i]; // allows release to know last hovered chip
             didColide = true;
+            isPlayerCard = true;
         } else {
             playerCards[i].style.backgroundColor = "white";
-            // TODO: make a better fix for for this
         }
     }
+    // not hidden dealer cards
+    for (let i = 0; i < dealerCards.length; i++) {
+        if (isColliding(dealerCards[i].getBoundingClientRect(), chipRec)) {
+            // Ignores for abilities that dont apply to non hidden dealer
+            if (chip.id == 2) break;
+
+            dealerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
+            collidedCard = dealerCards[i]; // allows release to know last hovered chip
+            didColide = true;
+            isPlayerCard = false;
+        } else {
+            dealerCards[i].style.backgroundColor = "white";
+        }
+    }
+    // hidden card only
+    if (chip.id == 2) {
+        const hiddenCard = document.getElementById("hidden");
+        if (isColliding(hiddenCard.getBoundingClientRect(), chipRec)) {
+            hiddenCard.style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
+            collidedCard = hiddenCard; // allows release to know last hovered chip
+            didColide = true;
+        } else {
+            hiddenCard.style.backgroundColor = "rgb(153, 26, 26)";
+        }
+    }
+
     if (!didColide) {
         collidedCard = null;
     }

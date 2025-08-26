@@ -47,12 +47,14 @@ function newRound(postShop) {
     if (postShop) {
         endDiv.style.animation = "slideUp 1.5s ease-in-out forwards";
         UpdateTempDisplay(); // Displays Bought Temporary Cards
+        UpdatePermDisplay();
     }
     // Resets values with new round
     playerLoss = false;
     playerWon = false;
     playerHand = [];
     dealerHand = [];
+    isHidden = true;
 
     // Creates a newDeck
     //deck = newDeck();
