@@ -200,7 +200,11 @@ for (let i = 0; i < upgrades.length; i++) {
 
         // actual chip and card logic
         if (collidedCard != null) {
+            // changes card to original collor
             collidedCard.style.backgroundColor = "white";
+            // Changes hidden card and deck back to orignal color
+            if (chip.id == 2 || chip.id == 3)
+                collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
 
             //reroll card
             if (chip.id == 0 && usedUpgrades[0] < upgrades[0]) {
@@ -230,10 +234,14 @@ for (let i = 0; i < upgrades.length; i++) {
                 update();
                 usedUpgrades[1]++;
             }
-            if (chip.id == 2 && usedUpgrades[1] < upgrades[2]) {
+            if (chip.id == 2 && usedUpgrades[2] < upgrades[2]) {
+                collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
                 isHidden = false;
                 update();
                 usedUpgrades[2]++;
+            }
+            if (chip.id == 3 && usedUpgrades[3] < upgrades[3]) {
+                collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
             }
         }
     };
@@ -252,7 +260,7 @@ function cardCollisionCheck(chip) {
     // all player cards
     for (let i = 0; i < playerCards.length; i++) {
         // Ignores for abilities that dont apply to player
-        if (chip.id == 2) break;
+        if (chip.id == 2 || chip.id == 3) break;
 
         if (isColliding(playerCards[i].getBoundingClientRect(), chipRec)) {
             playerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
@@ -267,7 +275,7 @@ function cardCollisionCheck(chip) {
     for (let i = 0; i < dealerCards.length; i++) {
         if (isColliding(dealerCards[i].getBoundingClientRect(), chipRec)) {
             // Ignores for abilities that dont apply to non hidden dealer
-            if (chip.id == 2) break;
+            if (chip.id == 2 || chip.id == 3) break;
 
             dealerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
             collidedCard = dealerCards[i]; // allows release to know last hovered chip
@@ -286,6 +294,17 @@ function cardCollisionCheck(chip) {
             didColide = true;
         } else {
             hiddenCard.style.backgroundColor = "rgb(153, 26, 26)";
+        }
+    }
+    // Reveal Card only
+    if (chip.id == 3) {
+        const deck = document.getElementById("deck");
+        if (isColliding(deck.getBoundingClientRect(), chipRec)) {
+            deck.style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
+            collidedCard = deck; // allows release to know last hovered chip
+            didColide = true;
+        } else {
+            deck.style.backgroundColor = "rgb(153, 26, 26)";
         }
     }
 
