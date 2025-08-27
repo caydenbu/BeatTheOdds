@@ -83,6 +83,9 @@ function newDeck() {
 }
 
 function drawCard(hand, deck, isPlayer) {
+    // resets showing next card when new card delt
+    showingNextCard = false;
+
     let card = deck[0];
     if (isPlayer) {
         hand.push(card);

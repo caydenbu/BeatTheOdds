@@ -242,6 +242,8 @@ for (let i = 0; i < upgrades.length; i++) {
             }
             if (chip.id == 3 && usedUpgrades[3] < upgrades[3]) {
                 collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
+                showingNextCard = true;
+                usedUpgrades[3]++;
             }
         }
     };

@@ -15,13 +15,14 @@ function CreateDeck() {
         let nextCardMatch = false;
 
         for (let i = 0; i < deck.length; i++) {
+            // Next card check
+            if (card.rank == nextCard.rank && card.suit == nextCard.suit) {
+                nextCardMatch = true;
+            }
             // Checks if card has been drawn or not
             if (card.rank == deck[i].rank && card.suit == deck[i].suit) {
                 cardInDeck = true;
                 break;
-            }
-            if (card.rank == nextCard.rank && card.suit == nextCardMatch.suit) {
-                nextCardMatch = true;
             }
             // Since the dealers last card is hidden we need to show it as not drawn when looking at the deck (I think this is better)
             if (
@@ -32,13 +33,13 @@ function CreateDeck() {
                 break;
             }
         }
-        console.log(nextCardMatch);
         // Just read honestly
         if (cardInDeck) {
             card.displayCard(deckContainers[currentSuit]);
-            if (nextCardMatch) {
-                deckContainers[currentSuit][
-                    i / currentSuit
+            // reveal next card chip logic
+            if (nextCardMatch && showingNextCard) {
+                deckContainers[currentSuit].children[
+                    i - currentSuit * 13
                 ].style.backgroundColor = "darkorchid";
             }
         } else {
