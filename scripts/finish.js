@@ -38,7 +38,7 @@ let tempPrices = [];
 function BuyTemp(tempIndex) {
     if (coins >= tempPrices[tempIndex]) {
         const cashReg = new Audio("./sfx/cashReg.wav");
-        cashReg.volume = sfxVol * 0.1;
+        cashReg.volume = sfxVol * 0.05;
         cashReg.play();
 
         ownedTempCards.push(tempCards[tempIndex]);
@@ -62,10 +62,10 @@ function BuyTemp(tempIndex) {
 
         SendNotification(
             "You can not afford that card (" +
-                coins +
-                "/" +
-                tempPrices[tempIndex] +
-                " chips)",
+            coins +
+            "/" +
+            tempPrices[tempIndex] +
+            " chips)",
             2,
         );
     }
@@ -148,7 +148,7 @@ const upgradeCost = [500, 800, 1000, 1000, 1500];
 function updateUpgrades(index) {
     if (coins >= upgradeCost[index] && upgrades[index] != maxUpgrades[index]) {
         const cashReg = new Audio("./sfx/cashReg.wav");
-        cashReg.volume = sfxVol * 0.1;
+        cashReg.volume = sfxVol * 0.05;
         cashReg.play();
 
         coins -= upgradeCost[index];
@@ -203,10 +203,10 @@ function CalculateWins(didWin) {
             bestStreak = playerWins;
             SendNotification(
                 "New Longest Streak!! (" +
-                    bestStreak +
-                    ") + " +
-                    bestStreak * 50 +
-                    " base chips",
+                bestStreak +
+                ") + " +
+                bestStreak * 50 +
+                " base chips",
                 5,
                 notiSound,
             );

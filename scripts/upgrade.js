@@ -219,6 +219,7 @@ for (let i = 0; i < upgrades.length; i++) {
                 } else {
                     dealerHand[collidedCard.id] = rerolledCard;
                 }
+                sparkle.play();
                 update();
                 usedUpgrades[0]++;
             }
@@ -231,18 +232,31 @@ for (let i = 0; i < upgrades.length; i++) {
                     dealerHand.splice(collidedCard.id, 1);
                 }
 
+                const poof = new Audio("./sfx/poof.wav");
+                poof.volume = sfxVol * 0.3;
+                poof.play();
+
                 update();
                 usedUpgrades[1]++;
             }
+            // Show dealer card
             if (chip.id == 2 && usedUpgrades[2] < upgrades[2]) {
                 collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
                 isHidden = false;
+
+                const flip = new Audio("./sfx/flip.wav");
+                flip.volume = sfxVol * 0.3;
+                flip.play();
+
                 update();
                 usedUpgrades[2]++;
             }
+            // Show next card
             if (chip.id == 3 && usedUpgrades[3] < upgrades[3]) {
                 collidedCard.style.backgroundColor = "rgb(153, 26, 26)";
                 showingNextCard = true;
+                sparkle.play();
+                SendNotification("Next card is highlighted in the deck.", 2);
                 usedUpgrades[3]++;
             }
         }
