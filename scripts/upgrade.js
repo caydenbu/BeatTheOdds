@@ -275,10 +275,45 @@ for (let i = 0; i < upgrades.length; i++) {
 const UPGRADESCREEN = document.getElementById("Upgrade-Screen");
 function changeRank(collidedCard) {
     UPGRADESCREEN.style.display = "flex";
+    INPUTBOX.value = "";
     const card = playerHand[collidedCard.id];
     const cardContainer = document.getElementById("Upgrade-Card-Container");
     card.displayCard(cardContainer);
-    cardContainer.children[1].style.width = "80%";
+    cardContainer.children[2].style.width = "80%";
+}
+
+// TODO: maybe condesnse this into one function some code dupes
+const INPUTBOX = document.getElementById("rank-input");
+let newCard;
+INPUTBOX.addEventListener("input", (event) => {
+    // TODO: Restrict inputs to 2-10, and A K Q J
+    newCard = playerHand[collidedCard.id];
+
+    // Change rank and score
+    newCard.rank = event.target.value;
+    if (newCard.rank === "A") {
+        newCard.score = 11;
+    } else if (["K", "Q", "J"].includes(newCard.rank)) {
+        newCard.score = 10;
+    } else {
+        newCard.score = parseInt(newCard.rank);
+    }
+    const cardContainer = document.getElementById("Upgrade-Card-Container");
+
+    // Replaces with new Card
+    cardContainer.removeChild(cardContainer.children[2]);
+    newCard.displayCard(cardContainer);
+    cardContainer.children[2].style.width = "80%";
+});
+
+function submitNewCard() {
+    UPGRADESCREEN.style.display = "none";
+    playerHand[collidedCard.id] = newCard;
+    update();
+
+    // Removes card for next iteration
+    const cardContainer = document.getElementById("Upgrade-Card-Container");
+    cardContainer.removeChild(cardContainer.children[2]);
 }
 
 function cardCollisionCheck(chip) {
