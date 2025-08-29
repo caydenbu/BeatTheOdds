@@ -145,7 +145,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.setPointerCapture(e.pointerId);
-        } catch { }
+        } catch {}
 
         e.preventDefault();
     });
@@ -196,7 +196,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.releasePointerCapture(e.pointerId);
-        } catch { }
+        } catch {}
 
         // actual chip and card logic
         if (collidedCard != null) {
@@ -259,12 +259,26 @@ for (let i = 0; i < upgrades.length; i++) {
                 SendNotification("Next card is highlighted in the deck.", 2);
                 usedUpgrades[3]++;
             }
+            // Reveal Card
+            if (chip.id == 4 && usedUpgrades[4] < upgrades[4]) {
+                changeRank(collidedCard);
+            }
         }
     };
 
     chip.addEventListener("pointerup", pointerUpOrCancel);
     chip.addEventListener("pointercancel", pointerUpOrCancel);
     SCROLLER.appendChild(chip);
+}
+
+// Change Rank Logic
+const UPGRADESCREEN = document.getElementById("Upgrade-Screen");
+function changeRank(collidedCard) {
+    UPGRADESCREEN.style.display = "flex";
+    const card = playerHand[collidedCard.id];
+    const cardContainer = document.getElementById("Upgrade-Card-Container");
+    card.displayCard(cardContainer);
+    cardContainer.children[1].style.width = "80%";
 }
 
 function cardCollisionCheck(chip) {
@@ -291,7 +305,7 @@ function cardCollisionCheck(chip) {
     for (let i = 0; i < dealerCards.length; i++) {
         if (isColliding(dealerCards[i].getBoundingClientRect(), chipRec)) {
             // Ignores for abilities that dont apply to non hidden dealer
-            if (chip.id == 2 || chip.id == 3) break;
+            if (chip.id == 2 || chip.id == 3 || chip.id == 4) break;
 
             dealerCards[i].style.backgroundColor = CHIPCOLOR[chip.id]; // sets to retrospective chip color
             collidedCard = dealerCards[i]; // allows release to know last hovered chip

@@ -11,4 +11,5 @@
 
 BUGS
     - reveal dealer card doesnt work 100% of the time might be fixed now
+    - Changes fonts to em so they actually adjust correctly :)
 
