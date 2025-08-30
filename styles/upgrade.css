@@ -26,12 +26,11 @@
 
 #Upgrade-Card-Container p {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
     color: white;
 }
 
-/* TODO: make this look better */
 .input-container {
     display: flex;
     align-items: center;
@@ -41,19 +40,29 @@
     height: 10%;
 }
 
-.input-container input[type="text"] {
+.input-container input {
     padding: 6px;
     width: 60%;
     height: 100%;
     font-size: 1em;
     flex: 1;
-    border-radius: 0.5vw;
+    border-radius: 1vw;
+    border: 3px solid rgb(150, 150, 150);
+    outline: none;
 }
 
 .input-container button {
     height: 100%;
     aspect-ratio: 1/1;
-    font-size: 14px;
+    font-size: 2em;
     border-radius: 0.5em;
     cursor: pointer;
+    border: none;
+    background-color: #128d41;
+    color: whitesmoke;
+    transition: 0.3s ease-in-out;
+}
+
+.input-container button:hover {
+    background-color: #0c5327;
 }

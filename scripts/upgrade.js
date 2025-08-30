@@ -145,7 +145,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.setPointerCapture(e.pointerId);
-        } catch {}
+        } catch { }
 
         e.preventDefault();
     });
@@ -196,7 +196,7 @@ for (let i = 0; i < upgrades.length; i++) {
 
         try {
             chip.releasePointerCapture(e.pointerId);
-        } catch {}
+        } catch { }
 
         // actual chip and card logic
         if (collidedCard != null) {
@@ -263,6 +263,7 @@ for (let i = 0; i < upgrades.length; i++) {
             if (chip.id == 4 && usedUpgrades[4] < upgrades[4]) {
                 changeRank(collidedCard);
                 swoosh.play();
+                usedUpgrades[4]++;
             }
         }
     };
@@ -329,7 +330,7 @@ INPUTBOX.addEventListener("input", (event) => {
     // Recalcs score
     if (newCard.rank === "A") {
         newCard.score = 11;
-    } else if (["K", "Q", "J"].includes(newCard.rank)) {
+    } else if (["K", "Q", "J"].includes(newCard.rank.toUpperCase())) {
         newCard.score = 10;
     } else {
         newCard.score = parseInt(newCard.rank);
