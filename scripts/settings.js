@@ -23,6 +23,7 @@ SFXSLIDER.addEventListener("input", () => {
     shuffle.volume = sfxVol;
     notiSound.volume = sfxVol;
     sparkle.volume = sfxVol;
+    swoosh.volume = sfxVol * 0.7;
 });
 
 // sets volume to previously assigned user volume (defaults to .5 if never changed I think)
@@ -31,7 +32,7 @@ shuffle.volume = SFXSLIDER.value / 100;
 
 // Gameplay Settings
 const CHARLIECHECKBOX = document.getElementById("fiveCardCharlie");
-CHARLIECHECKBOX.addEventListener("change", function() {
+CHARLIECHECKBOX.addEventListener("change", function () {
     if (this.checked) {
         charlieEnabled = true;
     } else {
@@ -40,7 +41,7 @@ CHARLIECHECKBOX.addEventListener("change", function() {
 });
 
 const STANDCHECKBOX = document.getElementById("standRules");
-STANDCHECKBOX.addEventListener("change", function() {
+STANDCHECKBOX.addEventListener("change", function () {
     if (this.checked) {
         standEnabled = true;
     } else {

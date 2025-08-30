@@ -11,6 +11,9 @@ notiSound.volume = sfxVol;
 const sparkle = new Audio("./sfx/sparkle.wav");
 sparkle.volume = sfxVol;
 
+const swoosh = new Audio("./sfx/swoosh.mp3");
+swoosh.volume = sfxVol * 0.7;
+
 const jazzBackground = new Audio("./sfx/wJazz.mp3");
 const jazzMult = 0.01;
 jazzBackground.volume = musicVol * jazzMult;

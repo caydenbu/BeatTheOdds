@@ -262,6 +262,7 @@ for (let i = 0; i < upgrades.length; i++) {
             // Reveal Card
             if (chip.id == 4 && usedUpgrades[4] < upgrades[4]) {
                 changeRank(collidedCard);
+                swoosh.play();
             }
         }
     };
@@ -277,6 +278,7 @@ function changeRank(collidedCard) {
     UPGRADESCREEN.style.display = "flex";
     INPUTBOX.value = "";
     const card = playerHand[collidedCard.id];
+    newCard = card;
     const cardContainer = document.getElementById("Upgrade-Card-Container");
     card.displayCard(cardContainer);
     cardContainer.children[2].style.width = "80%";
@@ -286,11 +288,45 @@ function changeRank(collidedCard) {
 const INPUTBOX = document.getElementById("rank-input");
 let newCard;
 INPUTBOX.addEventListener("input", (event) => {
-    // TODO: Restrict inputs to 2-10, and A K Q J
+    let newRank = event.target.value;
+    // Restricts player inputs to only card ranks
+    if (
+        ![
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "K",
+            "Q",
+            "J",
+            "A",
+            "", // Keep this so we can replace the #
+        ].includes(newRank.toUpperCase())
+    ) {
+        INPUTBOX.value = "#";
+        newRank = "A";
+    }
+    // Defaults no answer to ace
+    if (newRank == "") {
+        newRank = "A";
+    }
     newCard = playerHand[collidedCard.id];
 
     // Change rank and score
-    newCard.rank = event.target.value;
+    newCard.rank = newRank;
+    // Changes 1 to ace (so we can type 10)
+    if (newRank == "1") {
+        newCard.rank = "A";
+    }
+
+    // Todo: maybe just make this a class funciton in constructor
+    // Recalcs score
     if (newCard.rank === "A") {
         newCard.score = 11;
     } else if (["K", "Q", "J"].includes(newCard.rank)) {
@@ -298,9 +334,9 @@ INPUTBOX.addEventListener("input", (event) => {
     } else {
         newCard.score = parseInt(newCard.rank);
     }
-    const cardContainer = document.getElementById("Upgrade-Card-Container");
 
     // Replaces with new Card
+    const cardContainer = document.getElementById("Upgrade-Card-Container");
     cardContainer.removeChild(cardContainer.children[2]);
     newCard.displayCard(cardContainer);
     cardContainer.children[2].style.width = "80%";
@@ -309,6 +345,7 @@ INPUTBOX.addEventListener("input", (event) => {
 function submitNewCard() {
     UPGRADESCREEN.style.display = "none";
     playerHand[collidedCard.id] = newCard;
+
     update();
 
     // Removes card for next iteration
