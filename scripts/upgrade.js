@@ -328,7 +328,7 @@ INPUTBOX.addEventListener("input", (event) => {
 
     // Todo: maybe just make this a class funciton in constructor
     // Recalcs score
-    if (newCard.rank === "A") {
+    if (newCard.rank.toUpperCase() === "A") {
         newCard.score = 11;
     } else if (["K", "Q", "J"].includes(newCard.rank.toUpperCase())) {
         newCard.score = 10;
