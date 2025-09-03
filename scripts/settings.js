@@ -10,6 +10,20 @@ function ToggleSettings() {
     isSettingsOpen = !isSettingsOpen;
 }
 
+// Save Logic
+const SAVEKEYCONTAINER = document.getElementById("save-key");
+function SaveState() {
+    const key = createKey();
+    const KEYTEXT = document.createElement("span");
+    KEYTEXT.innerHTML = key;
+    // Reset Key
+    SAVEKEYCONTAINER.innerHTML = "Save Key: ";
+    SAVEKEYCONTAINER.appendChild(KEYTEXT);
+
+    // Saves Key to clipboard of user
+    navigator.clipboard.writeText(key);
+}
+
 // Slider logic
 const MUSICSLIDER = document.getElementById("music-slider");
 MUSICSLIDER.addEventListener("input", () => {
@@ -32,7 +46,7 @@ shuffle.volume = SFXSLIDER.value / 100;
 
 // Gameplay Settings
 const CHARLIECHECKBOX = document.getElementById("fiveCardCharlie");
-CHARLIECHECKBOX.addEventListener("change", function () {
+CHARLIECHECKBOX.addEventListener("change", function() {
     if (this.checked) {
         charlieEnabled = true;
     } else {
@@ -41,7 +55,7 @@ CHARLIECHECKBOX.addEventListener("change", function () {
 });
 
 const STANDCHECKBOX = document.getElementById("standRules");
-STANDCHECKBOX.addEventListener("change", function () {
+STANDCHECKBOX.addEventListener("change", function() {
     if (this.checked) {
         standEnabled = true;
     } else {

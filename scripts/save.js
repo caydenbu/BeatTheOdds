@@ -19,7 +19,7 @@
 // Lost Info
 // -Deck State (Just use current deck state);
 
-function CreateKey() {
+function createKey() {
     let key = "";
     key += coins + "/";
     key += playerWins + "/";
@@ -40,6 +40,51 @@ function CreateKey() {
         key += ownedTempCards[i].rank + "." + ownedTempCards[i].suit + "/";
     }
     return key;
+}
+
+const SAVESCREEN = document.getElementById("Save-Screen");
+
+let saveToggled = false;
+function ToggleSaveScreen() {
+    if (saveToggled) {
+        SAVESCREEN.style.display = "none";
+    } else {
+        SAVESCREEN.style.display = "flex";
+    }
+    saveToggled = !saveToggled;
+}
+// Save Stats when player puts key in box
+document.getElementById("key-input").addEventListener("input", () => {
+    DisplayStats();
+});
+
+const StatNames = [
+    "coins:",
+    "playerWins:",
+    "bestStreak:",
+    "Reroll Card ",
+    "Destroy Card ",
+    "Reveal Dealer Card:",
+    "Reveal Next Card:",
+    "Change Rank:",
+];
+function DisplayStats() {
+    const KEYCONTAINER = document.getElementById("key-input");
+    let stats = KEYCONTAINER.value.split("/");
+
+    for (let i = 0; i < 8; i++) {
+        // Removes previous p
+        SAVESCREEN.children[2 + i].innerHTML = "";
+        const P = document.createElement("p");
+        P.innerText = StatNames[i] + " " + stats[i];
+        SAVESCREEN.children[2 + i].appendChild(P);
+    }
+}
+
+function HandleLoadButton() {
+    const KEYCONTAINER = document.getElementById("key-input");
+    LoadState(KEYCONTAINER.value);
+    ToggleSaveScreen();
 }
 
 // Test key:  "8345/1/2/9/9/5/5/5/0/0/0/0/1/2.♥/K.♣/"

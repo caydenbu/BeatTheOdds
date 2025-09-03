@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./styles/title.css" />
     <link rel="stylesheet" href="./styles/settings.css" />
     <link rel="stylesheet" href="./styles/notification.css" />
+    <link rel="stylesheet" href="./styles/save.css" />
 
     <script src="./scripts/global.js"></script>
     <script src="./scripts/screen.js" defer></script>
@@ -58,6 +59,11 @@
 
         <p class="settings-sub">Save Settings</p>
         <hr />
+        <div class="settings-save-buttons">
+            <button onclick="SaveState()"> Save State</button>
+            <button onclick="ToggleSaveScreen()"> Load State</button>
+        </div>
+        <p id="save-key">Save Key:</p>
 
         <p class="settings-sub">Audio Settings</p>
         <hr />
@@ -88,6 +94,22 @@
     <!-- Notification Box -->
     <div id="Notification-Box">
         <p id="notification-text">PLACEHOLDER TEXT</p>
+    </div>
+    <div id="Save-Screen">
+        <h1 class="save-title">Load Save</h1>
+        <input id="key-input" type="text" placeholder="Enter Your Save Key..." />
+        <p>coins:</p>
+        <p>playerWins:</p>
+        <p>bestStreak:</p>
+        <p>Reroll Card:</p>
+        <p>Destroy Card:</p>
+        <p>Reveal Dealer Card:</p>
+        <p>Reveal Next Card:</p>
+        <p>Change Rank: </p>
+        <div class="save-buttons">
+            <button id="load" onclick="HandleLoadButton()">Load Save</button>
+            <button id="cancel" onclick="ToggleSaveScreen()">Cancel</button>
+        </div>
     </div>
     <!-- Playable Window -->
     <main id="Game-Screen">

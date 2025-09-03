@@ -19,6 +19,50 @@
     color: white;
     text-align: center;
     width: 100%;
+    padding-top: 20px;
+}
+
+.settings-save-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.settings-save-buttons button {
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 30px 10px 30px;
+    aspect-ratio: 9/2;
+    font-size: 2.5vw;
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.settings-save-buttons button:hover {
+    filter: brightness(70%);
+}
+
+.settings-save-buttons :nth-child(1) {
+    background-color: green;
+}
+
+.settings-save-buttons :nth-child(2) {
+    background-color: blue;
+}
+
+#save-key {
+    padding-top: 20px;
+    width: 50%;
+    font-size: 3vw;
+    color: green;
+    user-select: none;
+    word-wrap: break-word;
+}
+
+#save-key span {
+    user-select: text;
 }
 
 label {
