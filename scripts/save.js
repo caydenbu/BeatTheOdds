@@ -49,6 +49,7 @@ function ToggleSaveScreen() {
     if (saveToggled) {
         SAVESCREEN.style.display = "none";
     } else {
+        document.getElementById("key-input").value = ""; // Resets key type into box
         SAVESCREEN.style.display = "flex";
     }
     saveToggled = !saveToggled;
@@ -73,6 +74,10 @@ function DisplayStats() {
     let stats = KEYCONTAINER.value.split("/");
 
     for (let i = 0; i < 8; i++) {
+        // Breaks if it's not the full key
+        if (i >= stats.length) {
+            break;
+        }
         // Removes previous p
         SAVESCREEN.children[2 + i].innerHTML = "";
         const P = document.createElement("p");
@@ -90,7 +95,6 @@ function HandleLoadButton() {
 // Test key:  "8345/1/2/9/9/5/5/5/0/0/0/0/1/2.♥/K.♣/"
 function LoadState(key) {
     key = key.split("/");
-    console.log(key);
     coins = parseInt(key[0]);
     playerWins = key[1];
     bestStreak = key[2];
