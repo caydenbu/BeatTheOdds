@@ -88,6 +88,7 @@ function DisplayStats() {
 
 function HandleLoadButton() {
     const KEYCONTAINER = document.getElementById("key-input");
+    SendNotification("State has been loaded.", 2, notiSound);
     LoadState(KEYCONTAINER.value);
     ToggleSaveScreen();
 }

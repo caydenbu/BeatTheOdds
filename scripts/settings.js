@@ -21,6 +21,7 @@ function SaveState() {
     SAVEKEYCONTAINER.appendChild(KEYTEXT);
 
     // Saves Key to clipboard of user
+    SendNotification("Key was coppied to clipboard.", 2, notiSound);
     navigator.clipboard.writeText(key);
 }
 
