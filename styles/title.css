@@ -4,7 +4,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000;
+    background-blend-mode: multiply;
+    background: url("../Photos/tablebackground2.avif");
+    background-color: rgba(0, 0, 0, 0.7);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +16,19 @@
     z-index: 99;
     gap: 5%;
     box-shadow: 0px 0px 200px 200px rgba(0, 0, 0, 0.5);
+
+    animation: scroll-bg 30s linear infinite;
+}
+
+@keyframes scroll-bg {
+    from {
+        background-position-x: 0;
+        background-position-y: 0;
+    }
+
+    to {
+        background-position-x: -100vw;
+    }
 }
 
 #Title-Screen h1 {
