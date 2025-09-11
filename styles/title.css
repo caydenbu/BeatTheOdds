@@ -33,9 +33,19 @@
 
 #Title-Screen h1 {
     color: #ffffff;
-    font-size: 8em;
+    font-size: 6em;
     margin-bottom: 0;
     text-align: center;
+    font-family: dueces;
+}
+
+#Title-Screen h1 span {
+    color: darkred;
+    text-shadow:
+        1px 0 white,
+        -1px 0 white,
+        0 1px white,
+        0 -1px white;
 }
 
 #start {
@@ -51,32 +61,34 @@
 .title-button {
     width: 20%;
     height: 55%;
-    font-size: 3vw;
+    font-size: 2.5vw;
     border-radius: 20px;
     cursor: pointer;
     border-radius: 10px;
     border: none;
     transition: 0.3s ease-in-out;
+    font-family: dueces;
 }
 
 .title-button:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 #start-button {
     font-size: 5vw;
     font-weight: semi-bold;
     background-color: green;
-    border: none;
+    border: 2px solid white;
+    color: white;
     width: 32%;
     height: 75%;
-    border-radius: 30px;
+    border-radius: 3vw;
     transition: 0.3s ease-in-out;
-    font-family: monospace;
+    font-family: dueces;
 }
 
 #start-button:hover {
-    background-color: rgb(1, 92, 1);
+    background-color: darkred;
     cursor: pointer;
     transform: scale(1.05);
 }
@@ -84,10 +96,12 @@
 @keyframes slideUp {
     0% {
         transform: translateY(0vh);
+        background-position-x: 0;
     }
 
     100% {
         transform: translateY(-200vh);
+        background-position-x: -30vw;
     }
 }
 
