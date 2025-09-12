@@ -91,6 +91,46 @@
 
         <div id="settings-exit" onclick="ToggleSettings()">Exit</div>
     </menu>
+    <div id="Help-Screen">
+        <div id="Help-Exit" onclick="ToggleHelpScreen()">
+            <p>✕</p>
+        </div>
+        <h1>How Beat The <span>Odds</span> Works</h1>
+        <p style="text-align: center;">hope you like to read..</p>
+        <h3>Your Goal:</h3>
+        <p>-Reach 10 Consecutive wins ( lost hands reset your counter )</p>
+        <p>-And if you manage to do that goes as far as you possibly can</p>
+
+        <h2>How To Win 10 "Poker Hands" In a Row:</h2>
+        <h3>How my Poker Rules Work</h3>
+        <p><span>For a baseline:</span> your goal is to be closer to 21 than the dealer, if you go over 21 or stand when
+            the dealer
+            has a higher score you lose, sorry</p>
+        <p><span>The normal rules of poker are a bit diffrent in this game:</span> usually whenever you stand and let
+            the dealer draw
+            they draw until the have a higher score or bust. In my version they will only pull one card allowing you to
+            pull cards yourself until your higher than the dealer again</p>
+
+        <p><span>Chips:</span> after every win you will gain chips which will allow you to buy upgrades to make the
+            process a bit easier. The further you progress in the game, the more chips you will gain each round
+        </p>
+        <h3>Temporary Cards</h3>
+        <p><span>In the shop,</span> You will have an option to buy cards which you can place into your hand anytime.
+        </p>
+        <p><span>Unfortunatly,</span> your un-used cards will disapear after each lost so be carefull...</p>
+        <h3>Perminant Chips</h3>
+        <p><span>In the shop,</span> You can Buy 5 diffrent options of chips upgrades (Reroll Card, Destroy Card, Reveal
+            Dealer Card, Reveal Next Card, Change Rank) </p>
+        <p><span>Unlike the Temporary Cards:</span> Your purchased chips will not disapear after loss but instead will
+            reset the uses after each loss</p>
+        <p><span>Each chip can be used by:</span> dragging the chip to the card or deck that corresponds to it</p>
+        <p><span>Reroll Card: </span> can be used on player cards and dealer cards</p>
+        <p><span>Destroy Card:</span> can be used on player cards and dealer cards</p>
+        <p><span>Reveal Dealer Card:</span> can be used on the hidden dealer card</p>
+        <p><span>Reveal Next Card:</span> can be used on the deck (click the deck to view it)</p>
+        <p><span>Change Rank:</span> can be used on player cards</p>
+        <h2>Thats it good luck!</h2>
+    </div>
     <!-- Save Screen -->
     <div id="Save-Screen">
         <h1 class="save-title">Load Save</h1>
@@ -168,6 +208,7 @@
         <div id="actions">
             <div class="action-settings">
                 <button onclick="ToggleSettings()">Settings⛭</button>
+                <button onclick="ToggleHelpScreen()">Help?</button>
             </div>
             <div class="deck-div">
                 <div id="deck" onclick="OpenDeck()">

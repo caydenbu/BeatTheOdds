@@ -290,16 +290,18 @@ body {
 
 .action-settings {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
+    gap: 5%;
 
-    height: 20%;
+    height: 25%;
     width: 100%;
 }
 
 .action-settings button {
     width: 80%;
-    height: 40%;
+    aspect-ratio: 6/2;
     background-color: #383838;
     border: 5px solid #5b5b5b;
     border-radius: 20px;
@@ -353,7 +355,7 @@ body {
 }
 
 .hit-stand {
-    height: 50%;
+    height: 45%;
     width: 100%;
 
     display: flex;

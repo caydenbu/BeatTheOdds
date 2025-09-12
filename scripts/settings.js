@@ -63,3 +63,15 @@ STANDCHECKBOX.addEventListener("change", function() {
         standEnabled = false;
     }
 });
+
+// Help Screen Logic dont mind it being here :)
+let helpToggled = false;
+const HELPSCREEN = document.getElementById("Help-Screen");
+function ToggleHelpScreen() {
+    if (helpToggled) {
+        HELPSCREEN.style.display = "none";
+    } else {
+        HELPSCREEN.style.display = "flex";
+    }
+    helpToggled = !helpToggled;
+}

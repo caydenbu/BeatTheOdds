@@ -147,3 +147,84 @@ hr {
         width: 80%;
     }
 }
+
+#Help-Screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    z-index: 999;
+    padding: 5%;
+
+    display: none;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#Help-Exit {
+    position: fixed;
+    top: 5%;
+    right: 2%;
+    width: 80px;
+    aspect-ratio: 1/1;
+    border-radius: 80px;
+    background-color: darkred;
+    border: 2px solid white;
+    box-shadow: 0px 0px 50px 20px black;
+    color: white;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#Help-Exit:hover {
+    filter: brightness(80%);
+    transform: scale(105%);
+}
+
+#Help-Screen h1 {
+    font-size: 64px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#Help-Screen h2 {
+    padding-top: 5%;
+    font-size: 64px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#Help-Screen h1 span {
+    color: darkred;
+    text-shadow:
+        1px 0 white,
+        -1px 0 white,
+        0 1px white,
+        0 -1px white;
+}
+
+#Help-Screen h3 {
+    padding-top: 5%;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#Help-Screen p {
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#Help-Exit p {
+    font-size: 40px;
+}
+
+#Help-Screen p span {
+    font-weight: bold;
+}
