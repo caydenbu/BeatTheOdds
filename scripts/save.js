@@ -110,6 +110,12 @@ function LoadState(key) {
     usedUpgrades[3] = key[11];
     usedUpgrades[4] = key[12];
 
+    // Update Neccesarry stuff
     UpdateTempDisplay();
     UpdatePermDisplay();
+
+    const checkboxes = document.querySelectorAll(".checkbox");
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
+    }
 }

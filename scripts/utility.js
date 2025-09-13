@@ -16,11 +16,10 @@ function dev() {
     SendNotification("DEV MODE ENABLED", 1);
     coins = 100000;
     upgrades = [9, 9, 5, 5, 5];
-    UpdatePermDisplay();
-}
 
-document.addEventListener("keydown", function (event) {
-    if (event.shiftKey && event.key.toLowerCase() === "d") {
-        dev();
+    UpdatePermDisplay();
+    const checkboxes = document.querySelectorAll(".checkbox");
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
     }
-});
+}
