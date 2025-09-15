@@ -192,13 +192,11 @@ function failAnimation(index) {
 }
 
 // Win Bar Logic in the left of the screen
-const winCircles = document.getElementById("win-bar").children;
-
 let bestStreak = 0;
 function CalculateWins(didWin) {
+    const winCircles = document.getElementById("win-bar").children;
     if (didWin) {
         playerWins++;
-
         if (playerWins > bestStreak) {
             bestStreak = playerWins;
             SendNotification(

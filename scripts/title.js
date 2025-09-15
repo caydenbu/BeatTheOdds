@@ -89,11 +89,51 @@ async function GlitchAnimation() {
 
 // End Screen Logic
 const STOP = document.getElementById("stop");
+let changing = false;
 
 STOP.addEventListener("mouseenter", () => {
-    STOP.style.opacity = 0;
-    setTimeout(() => {
-        STOP.textContent = "Continue";
-        STOP.style.opacity = 1;
-    }, 300);
+    TheIllusionOfChoice();
 });
+STOP.addEventListener("mouseleave", () => {
+    changing = false;
+    STOP.innerHTML = "Give Up.";
+});
+
+let realChoice = "Continue.";
+async function TheIllusionOfChoice() {
+    changing = true;
+    for (let i = 0; i < realChoice.length; i++) {
+        STOP.innerHTML = realChoice.slice(0, i + 1);
+        await wait(50);
+        if (!changing) {
+            STOP.innerHTML = "Give Up.";
+            break;
+        }
+    }
+}
+let alreadyWon = false;
+let EndToggled = false;
+const ENDSCREEN = document.getElementById("End-Screen");
+ENDSCREEN.classList.add("End-Hidden");
+function EndScreen() {
+    alreadyWon = true;
+    if (!EndToggled) {
+        ENDSCREEN.classList.remove("End-Hidden");
+        ENDSCREEN.classList.add("End-Shown");
+    } else {
+        ENDSCREEN.classList.add("End-Hidden");
+        ENDSCREEN.classList.remove("End-Shown");
+        IncreaseWins();
+    }
+    EndToggled = !EndToggled;
+}
+
+async function IncreaseWins() {
+    await wait(1000); // Wait For End Screen to go up
+    // Increase win counter by 90
+    const winCircleDiv = document.getElementById("win-bar");
+    for (let i = 0; i < 90; i++) {
+        await wait(50); // Wait For End Screen to go up
+        winCircleDiv.appendChild(document.createElement("div"));
+    }
+}

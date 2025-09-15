@@ -48,6 +48,9 @@ function newRound(postShop) {
         endDiv.style.animation = "slideUp 1.5s ease-in-out forwards";
         UpdateTempDisplay(); // Displays Bought Temporary Cards
         UpdatePermDisplay();
+
+        // Check if player "won the Game"
+        if (playerWins == 10 && !alreadyWon) EndScreen();
     }
     // Resets values with new round
     playerLoss = false;
