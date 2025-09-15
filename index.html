@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./styles/settings.css" />
     <link rel="stylesheet" href="./styles/notification.css" />
     <link rel="stylesheet" href="./styles/save.css" />
+    <link rel="stylesheet" href="./styles/end.css" />
 
     <script src="./scripts/global.js"></script>
     <script src="./scripts/screen.js" defer></script>
@@ -53,6 +54,20 @@
             </a>
         </div>
     </header>
+    <!-- End Screen -->
+    <div id="End-Screen">
+        <h1>You Win!!!</h1>
+        <h2>10 wins in a row! But What if you can win 11... 12... 20... In a row</h2>
+        <h3>Real Gamblers dont stop here.</h3>
+        <div class="choice">
+            <div id="stop">
+                Give Up.
+            </div>
+            <div id="continue">
+                Continue.
+            </div>
+        </div>
+    </div>
     <!-- Settings Screen -->
     <menu id="Settings-Screen">
         <p class="settings-title">Settings</p>
@@ -108,7 +123,8 @@
             has a higher score you lose, sorry.</p>
         <p><span>The normal rules of poker are a bit different in this game:</span> usually whenever you stand and let
             the dealer draw
-            they will draw until they have a higher score or bust. In my version they will only pull one card allowing you to
+            they will draw until they have a higher score or bust. In my version they will only pull one card allowing
+            you to
             pull cards yourself until you have a higher score than the dealer again.</p>
 
         <p><span>Chips:</span> after every win you will gain chips, which will allow you to buy upgrades to make the

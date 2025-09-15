@@ -86,3 +86,14 @@ async function GlitchAnimation() {
         }
     }
 }
+
+// End Screen Logic
+const STOP = document.getElementById("stop");
+
+STOP.addEventListener("mouseenter", () => {
+    STOP.style.opacity = 0;
+    setTimeout(() => {
+        STOP.textContent = "Continue";
+        STOP.style.opacity = 1;
+    }, 300);
+});
