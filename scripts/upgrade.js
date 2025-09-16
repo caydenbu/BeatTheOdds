@@ -285,7 +285,6 @@ function changeRank(collidedCard) {
     cardContainer.children[2].style.width = "80%";
 }
 
-// TODO: maybe condesnse this into one function some code dupes
 const INPUTBOX = document.getElementById("rank-input");
 let newCard;
 INPUTBOX.addEventListener("input", (event) => {
@@ -325,8 +324,6 @@ INPUTBOX.addEventListener("input", (event) => {
     if (newRank == "1") {
         newCard.rank = "A";
     }
-
-    // Todo: maybe just make this a class funciton in constructor
     // Recalcs score
     if (newCard.rank.toUpperCase() === "A") {
         newCard.score = 11;

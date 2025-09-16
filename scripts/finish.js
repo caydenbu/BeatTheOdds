@@ -145,6 +145,15 @@ let upgrades = [0, 0, 0, 0, 0];
 const maxUpgrades = [9, 9, 5, 5, 5];
 const upgradeCost = [500, 800, 1000, 1000, 1500];
 
+function UnlockUpgrade(Streak) {
+    if (Streak > 5) return; // No point in checking any streak unlock after this point
+    const cards = document.querySelectorAll(".perm-card");
+    const locks = document.querySelectorAll(".perm-locked");
+    cards[Streak - 1].style.display = "flex";
+    locks[Streak - 1].style.display = "none";
+}
+UnlockUpgrade(1); // auto unlocks reroll Card
+
 function updateUpgrades(index) {
     if (coins >= upgradeCost[index] && upgrades[index] != maxUpgrades[index]) {
         const cashReg = new Audio("./sfx/cashReg.wav");
@@ -197,8 +206,13 @@ function CalculateWins(didWin) {
     const winCircles = document.getElementById("win-bar").children;
     if (didWin) {
         playerWins++;
+        // New Longest Streak
         if (playerWins > bestStreak) {
             bestStreak = playerWins;
+            // Checks if can unlock new upgrades
+            UnlockUpgrade(playerWins);
+
+            // Sends notification for new longest streak
             SendNotification(
                 "New Longest Streak!! (" +
                 bestStreak +

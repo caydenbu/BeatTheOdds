@@ -8,6 +8,7 @@
     background-color: black;
     color: white;
     transition: 2s ease-in-out;
+    overflow-y: auto;
 
     display: flex;
     align-items: center;
