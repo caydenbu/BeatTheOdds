@@ -5,6 +5,7 @@ function ToggleSettings() {
         SETTINGSSCREEN.style.display = "none";
     } else {
         SETTINGSSCREEN.style.display = "flex";
+        SETTINGSSCREEN.scrollTop = 0;
     }
 
     isSettingsOpen = !isSettingsOpen;
@@ -72,6 +73,7 @@ function ToggleHelpScreen() {
         HELPSCREEN.style.display = "none";
     } else {
         HELPSCREEN.style.display = "flex";
+        HELPSCREEN.scrollTop = 0;
     }
     helpToggled = !helpToggled;
 }

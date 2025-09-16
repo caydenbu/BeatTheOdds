@@ -1,5 +1,4 @@
 - unlock perm buffs with new longest run. ex: 4 in a row unlocks wild card)
 
 50% done - Make scaling more balanced
-- Reset scroll position when opening settings and help screen (maybe by turning of overflow when toggled off)
 - Move end screen logic into its own js file?

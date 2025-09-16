@@ -171,10 +171,10 @@ hr {
 }
 
 #Help-Exit {
-    position: fixed;
-    top: 5%;
-    right: 2%;
+    position: sticky;
+    top: 0;
     width: 80px;
+    transform: translateX(calc(90vw - 80px));
     aspect-ratio: 1/1;
     border-radius: 80px;
     background-color: darkred;
@@ -192,7 +192,7 @@ hr {
 
 #Help-Exit:hover {
     filter: brightness(80%);
-    transform: scale(105%);
+    transform: scale(105%) translateX(calc(86.5vw - 84px));
 }
 
 #Help-Screen h1 {
