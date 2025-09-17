@@ -1,4 +1,4 @@
-# ![♠️ Beat The Odds](./photos/banner.png)
+# ![♠️ Beat The Odds](https://github.com/caydenbu/BeatTheOdds/blob/main/Photos/Banner.png)
 
 ### Try the [Beat The Odds](https://caydenbu.github.io/BeatTheOdds/) website OR follow these instructions to download it yourself:
 
