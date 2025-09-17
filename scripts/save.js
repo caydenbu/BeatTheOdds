@@ -19,7 +19,9 @@
 // Lost Info
 // -Deck State (Just use current deck state);
 
+let hasSaved = false;
 function createKey() {
+    hasSaved = true;
     let key = "";
     key += coins + "/";
     key += playerWins + "/";
@@ -119,3 +121,11 @@ function LoadState(key) {
         checkboxes[i].innerHTML = upgrades[i] + "/" + maxUpgrades[i];
     }
 }
+
+// Conforms reload before change
+window.addEventListener("beforeunload", function (event) {
+    if (!hasSaved) {
+        event.preventDefault();
+        event.returnValue = ""; // Required for most browsers
+    }
+});

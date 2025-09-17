@@ -62,10 +62,10 @@ function BuyTemp(tempIndex) {
 
         SendNotification(
             "You can not afford that card (" +
-            coins +
-            "/" +
-            tempPrices[tempIndex] +
-            " chips)",
+                coins +
+                "/" +
+                tempPrices[tempIndex] +
+                " chips)",
             2,
         );
     }
@@ -120,7 +120,14 @@ let coinIncrease = 100;
 async function coinUpdate() {
     coinIncrease = 100;
     if (playerWon) {
-        coinIncrease *= playerWins + 1;
+        consectiveMult = playerWins;
+
+        // Decreeses chip scaling factor later on
+        if (consectiveMult > 5) {
+            consectiveMult = 5 + (playerWins - 5) / 2;
+        }
+
+        coinIncrease *= consectiveMult + 1 * 0.25;
     }
     coinIncrease += bestStreak * 50;
 
@@ -215,10 +222,10 @@ function CalculateWins(didWin) {
             // Sends notification for new longest streak
             SendNotification(
                 "New Longest Streak!! (" +
-                bestStreak +
-                ") + " +
-                bestStreak * 50 +
-                " base chips",
+                    bestStreak +
+                    ") + " +
+                    bestStreak * 50 +
+                    " base chips",
                 5,
                 notiSound,
             );
