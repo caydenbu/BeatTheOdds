@@ -26,19 +26,19 @@
 }
 
 #End-Screen h1 {
-    font-size: 86px;
+    font-size: 8vw;
     font-weight: bold;
 }
 
 #End-Screen h2 {
-    font-size: 48px;
+    font-size: 4vw;
     width: 70%;
     font-weight: normal;
     text-align: center;
 }
 
 #End-Screen h3 {
-    font-size: 48px;
+    font-size: 4vw;
     width: 70%;
     text-align: center;
 }

@@ -7,6 +7,7 @@
     /* Safari blur */
     -webkit-backdrop-filter: blur(8px);
     z-index: 999;
+    overflow-y: auto;
 
     display: none;
     align-items: center;
@@ -28,7 +29,7 @@
     margin-bottom: 3%;
     padding: 6px;
     width: 60%;
-    height: 10%;
+    aspect-ratio: 12/1;
     font-size: 2em;
     border-radius: 1vw;
     border: 3px solid white;
